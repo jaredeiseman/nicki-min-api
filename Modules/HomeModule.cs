@@ -9,8 +9,8 @@ namespace NickiMinAPI
   {
     public HomeModule()
     {
-      Get["/"] = _ => {
-        return View["index.cshtml"];
+      Get["/{page}"] = parameters => {
+        return View[parameters.page + ".cshtml"];
       };
     }
   }
