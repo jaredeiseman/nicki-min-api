@@ -1,20 +1,5 @@
-#docs {
-  @include grid-container;
-  background-color: $c-l-3;
-
-  .content {
-    @include grid-column(10);
-    @include grid-shift(1);
-    background-color: white;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
-    box-shadow: 2px 0 4px -2px black, -2px 0 4px -2px black;
-    padding: 0px 40px;
-
-    .doc {
-      margin-top: 60px;
-      padding-bottom: 40px;
-      border-bottom: 2px solid $c-l-3;
-    }
-  }
+.doc {
+  margin-top: 60px;
+  padding-bottom: 40px;
+  border-bottom: 2px solid $c-l-3;
 }

@@ -41,6 +41,31 @@ p {
   width: 100%;
 }
 
+#main-layout {
+  background-color: #ffe1e7;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100% - 80px);
+}
+#main-layout::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+#main-layout .content {
+  width: calc(83.33333% - 36.66667px);
+  float: left;
+  margin-left: 20px;
+  left: calc(8.33333% - 21.66667px + 20px);
+  position: relative;
+  background-color: white;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  box-shadow: 2px 0 4px -2px black, -2px 0 4px -2px black;
+  padding: 0px 40px;
+  flex-grow: 1;
+}
+
 .burger {
   width: 50px;
   height: 35px;
@@ -363,30 +388,21 @@ nav ul.desktop-nav li {
   }
 }
 
-#docs {
-  background-color: #ffe1e7;
-}
-#docs::after {
-  clear: both;
-  content: "";
-  display: block;
-}
-#docs .content {
-  width: calc(83.33333% - 36.66667px);
-  float: left;
-  margin-left: 20px;
-  left: calc(8.33333% - 21.66667px + 20px);
-  position: relative;
-  background-color: white;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  box-shadow: 2px 0 4px -2px black, -2px 0 4px -2px black;
-  padding: 0px 40px;
-}
-#docs .content .doc {
+.doc {
   margin-top: 60px;
   padding-bottom: 40px;
   border-bottom: 2px solid #ffe1e7;
+}
+
+#serenade {
+  text-align: center;
+}
+#serenade h6 {
+  margin-bottom: 50px;
+}
+#serenade img {
+  margin-top: 40px;
+  cursor: default;
 }
 
 /*# sourceMappingURL=styles.css.map */
