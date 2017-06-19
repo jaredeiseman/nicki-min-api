@@ -1,0 +1,24 @@
+nav {
+  .desktop-nav {
+
+    a {
+      font-family: $heading-font;
+      text-decoration: none;
+      color: white;
+      font-size: 20px;
+      padding: 30px 20px;
+      transition: color .3s, text-shadow .3s, background .3s;
+
+      &:hover {
+        color: $c-d-1;
+        background: black;
+        text-shadow: 1px 1px 1px rgba(0, 0 , 0, 0.5);
+      }
+    }
+
+  }
+
+  .mobile-nav {
+
+  }
+}

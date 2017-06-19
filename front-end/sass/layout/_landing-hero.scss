@@ -18,11 +18,11 @@
       max-width: 200px;
 
       @include tablet-bp {
-        max-width: 300px;
+        max-width: 280px;
       }
 
       @include desktop-bp {
-        max-width: 400px;
+        max-width: 500px;
       }
     }
   }

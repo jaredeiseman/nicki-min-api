@@ -19,6 +19,7 @@
       text-shadow: 2px 2px 1px rgba(0,0,0,0.5);
       border-bottom: 2px solid $c-l-2;
       margin-bottom: 18px;
+      display: inline-block;
 
       @include desktop-bp {
         font-size: 60px;

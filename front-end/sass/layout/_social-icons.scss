@@ -1,10 +1,5 @@
 .social-icons {
-  @include size(80px, 30px);
+  @include size(90px, 30px);
   display: flex;
   justify-content: space-between;
-
-  .twitter, .github {
-    @include size(30px);
-    background: black;
-  }
 }

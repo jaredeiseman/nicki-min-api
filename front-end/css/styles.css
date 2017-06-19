@@ -152,6 +152,7 @@ h1, h2, h3, h4, h5, h6 {
   text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
   border-bottom: 2px solid #ffc7d4;
   margin-bottom: 18px;
+  display: inline-block;
 }
 @media screen and (min-width: 992px) {
   #landing-hero .title h1 {
@@ -174,6 +175,50 @@ header {
   border-bottom: 1px solid black;
 }
 
+nav .desktop-nav a {
+  font-family: Nevis-Bold, Arial, sans-serif;
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  padding: 30px 20px;
+  transition: color .3s, text-shadow .3s, background .3s;
+}
+nav .desktop-nav a:hover {
+  color: #ff7b98;
+  background: black;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.social-icons {
+  z-index: 20 !important;
+}
+.social-icons .twitter, .social-icons .github {
+  height: 40px;
+  width: 40px;
+  transition: background-image .3s;
+  cursor: pointer;
+}
+.social-icons .twitter {
+  background-image: url("../img/twit.png");
+  background-repeat: no-repeat;
+  background-size: 40px 40px;
+  background-position: center;
+  display: inline-block;
+}
+.social-icons .twitter:hover {
+  background-image: url("../img/twit-white.png");
+}
+.social-icons .github {
+  background-image: url("../img/gh.png");
+  background-repeat: no-repeat;
+  background-size: 40px 40px;
+  background-position: center;
+  display: inline-block;
+}
+.social-icons .github:hover {
+  background-image: url("../img/gh-white.png");
+}
+
 header {
   height: 80px;
   width: 100%;
@@ -189,7 +234,6 @@ nav ul {
 }
 nav ul.desktop-nav li {
   display: inline-block;
-  margin-left: 40px;
   display: none;
 }
 @media screen and (min-width: 992px) {
@@ -223,25 +267,20 @@ nav ul.mobile-nav li {
 }
 @media screen and (min-width: 768px) {
   #landing-hero .title p {
-    max-width: 300px;
+    max-width: 280px;
   }
 }
 @media screen and (min-width: 992px) {
   #landing-hero .title p {
-    max-width: 400px;
+    max-width: 500px;
   }
 }
 
 .social-icons {
   height: 30px;
-  width: 80px;
+  width: 90px;
   display: flex;
   justify-content: space-between;
-}
-.social-icons .twitter, .social-icons .github {
-  height: 30px;
-  width: 30px;
-  background: black;
 }
 
 .landing-container {
@@ -250,7 +289,7 @@ nav ul.mobile-nav li {
 }
 .landing-container .social-icons {
   position: fixed;
-  bottom: 10px;
+  bottom: 20px;
   left: 10px;
 }
 

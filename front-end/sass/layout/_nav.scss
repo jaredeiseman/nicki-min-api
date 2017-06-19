@@ -4,7 +4,6 @@ nav {
 
     &.desktop-nav li {
       display: inline-block;
-      margin-left: 40px;
       display: none;
 
       @include desktop-bp {
