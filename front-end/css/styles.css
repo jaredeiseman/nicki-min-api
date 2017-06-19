@@ -131,6 +131,13 @@ h1, h2, h3, h4, h5, h6 {
     transform: rotate(0deg);
   }
 }
+#landing-hero {
+  background-image: url("../img/landing-bg.jpg");
+  background-size: auto 100%;
+  background-position: right;
+  background-repeat: no-repeat;
+}
+
 header {
   height: 80px;
   width: 100%;
@@ -166,8 +173,28 @@ nav ul.mobile-nav li {
 }
 #landing-hero .title {
   position: absolute;
-  top: 20%;
-  left: 10%;
+  top: 18%;
+  left: -15px;
+  transform: rotate(-60deg);
+}
+@media screen and (min-width: 768px) {
+  #landing-hero .title {
+    left: 10%;
+    transform: rotate(0);
+  }
+}
+#landing-hero .title p {
+  max-width: 200px;
+}
+@media screen and (min-width: 768px) {
+  #landing-hero .title p {
+    max-width: 300px;
+  }
+}
+@media screen and (min-width: 992px) {
+  #landing-hero .title p {
+    max-width: 400px;
+  }
 }
 
 .social-icons {
@@ -188,8 +215,8 @@ nav ul.mobile-nav li {
 }
 .landing-container .social-icons {
   position: fixed;
-  bottom: 20px;
-  left: 20px;
+  bottom: 10px;
+  left: 10px;
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -5,7 +5,25 @@
 
   .title {
     position: absolute;
-    top: 20%;
-    left: 10%;
+    top: 18%;
+    left: -15px;
+    transform: rotate(-60deg);
+
+    @include tablet-bp {
+      left: 10%;
+      transform: rotate(0);
+    }
+
+    p {
+      max-width: 200px;
+
+      @include tablet-bp {
+        max-width: 300px;
+      }
+
+      @include desktop-bp {
+        max-width: 400px;
+      }
+    }
   }
 }
