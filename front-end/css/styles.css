@@ -25,6 +25,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: Nevis-Bold, Arial, sans-serif;
+  color: #ff6184;
 }
 
 .burger {
@@ -137,12 +138,46 @@ h1, h2, h3, h4, h5, h6 {
   background-position: right;
   background-repeat: no-repeat;
 }
+#landing-hero .mesh {
+  position: fixed;
+  height: calc(100vh - 80px);
+  width: 100vw;
+  left: 0;
+  bottom: 0;
+  background: rgba(255, 72, 113, 0.3);
+  z-index: 5;
+}
+#landing-hero .title h1 {
+  font-size: 35px;
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
+  border-bottom: 2px solid #ffc7d4;
+  margin-bottom: 18px;
+}
+@media screen and (min-width: 992px) {
+  #landing-hero .title h1 {
+    font-size: 60px;
+  }
+}
+#landing-hero .title p {
+  font-size: 18px;
+  color: #ff7b98;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.9);
+}
+@media screen and (min-width: 992px) {
+  #landing-hero .title p {
+    font-size: 30px;
+  }
+}
+
+header {
+  background: #ff7b98;
+  border-bottom: 1px solid black;
+}
 
 header {
   height: 80px;
   width: 100%;
   padding: 15px 60px;
-  border: 1px dashed black;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -173,7 +208,7 @@ nav ul.mobile-nav li {
 }
 #landing-hero .title {
   position: absolute;
-  top: 18%;
+  top: 21%;
   left: -15px;
   transform: rotate(-60deg);
 }
