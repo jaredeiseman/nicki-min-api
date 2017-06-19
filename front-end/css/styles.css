@@ -17,6 +17,7 @@
 html, body {
   height: 100vh;
   width: 100vw;
+  overflow-x: hidden;
 }
 
 body {
@@ -32,8 +33,9 @@ h1, h2, h3, h4, h5, h6 {
   width: 50px;
   height: 35px;
   position: relative;
-  transform: scale(0.5);
+  transform: scale(0.7) translateX(70px);
   cursor: pointer;
+  z-index: 120 !important;
 }
 @media screen and (min-width: 992px) {
   .burger {
@@ -42,7 +44,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .burger span {
   display: block;
-  background-color: #000;
+  background-color: #fff;
   height: 5px;
   width: 50px;
   position: absolute;
@@ -175,7 +177,7 @@ header {
   border-bottom: 1px solid black;
 }
 
-nav .desktop-nav a {
+nav a {
   font-family: Nevis-Bold, Arial, sans-serif;
   text-decoration: none;
   color: white;
@@ -183,9 +185,31 @@ nav .desktop-nav a {
   padding: 30px 20px;
   transition: color .3s, text-shadow .3s, background .3s;
 }
-nav .desktop-nav a:hover {
+nav a:hover {
   color: #ff7b98;
   background: black;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+nav .mobile-nav {
+  height: 100vh;
+  width: 250px;
+  padding: 50px 25px 25px;
+  position: fixed;
+  right: -250px;
+  top: 0;
+  background: #ff4871;
+  z-index: 100;
+}
+nav .mobile-nav a {
+  display: block;
+  font-size: 20px;
+  white-space: nowrap;
+  padding: 20px 0;
+  border-bottom: 1px solid #ffaec0;
+}
+nav .mobile-nav a:hover {
+  color: white;
+  background: transparent;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
@@ -240,9 +264,6 @@ nav ul.desktop-nav li {
   nav ul.desktop-nav li {
     display: inline-block;
   }
-}
-nav ul.mobile-nav li {
-  display: none;
 }
 
 #landing-hero {

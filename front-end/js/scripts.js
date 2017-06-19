@@ -8,6 +8,8 @@ $(document).ready(function() {
       $('.burger span:first-child').addClass('toggle-top');
       $('.burger span:last-child').addClass('toggle-bottom');
       $('.burger span:nth-child(2)').addClass('middle');
+      $('.mobile-nav').animate({right: 0}, 1000);
+      // $(this).css({transform: 'translateX(30px) scale(0.5)'});
       expanded = true;
     } else {
       $('.burger span:nth-child(2)').removeClass('middle');
@@ -15,6 +17,7 @@ $(document).ready(function() {
       $('.burger span:last-child').removeClass('toggle-bottom');
       $('.burger span:first-child').addClass('toggle-top-reverse');
       $('.burger span:last-child').addClass('toggle-bottom-reverse');
+      $('.mobile-nav').animate({right: '-250px'}, 1000);
       expanded = false;
     }
   });

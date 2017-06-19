@@ -2,8 +2,9 @@
   width: 50px;
   height: 35px;
   position: relative;
-  transform: scale(.5);
+  transform: scale(.7) translateX(70px);
   cursor: pointer;
+  z-index: 120 !important;
 
   @include desktop-bp {
     display: none;
@@ -11,7 +12,7 @@
 
   span {
     display: block;
-    background-color: #000;
+    background-color: #fff;
     height: 5px;
     width: 50px;
     position: absolute;

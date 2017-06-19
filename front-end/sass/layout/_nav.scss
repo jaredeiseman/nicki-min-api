@@ -12,7 +12,7 @@ nav {
     }
 
     &.mobile-nav li {
-      display: none;
+      // display: none;
       @include desktop-bp {
       }
     }
