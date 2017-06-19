@@ -1,0 +1,10 @@
+@mixin tablet-bp {
+  @media #{$tablet-bp} {
+    @content;
+  }
+}
+@mixin desktop-bp {
+  @media #{$desktop-bp} {
+    @content;
+  }
+}

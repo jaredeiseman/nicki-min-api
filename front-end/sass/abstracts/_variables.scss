@@ -1,15 +1,15 @@
 //font definitions
 @font-face {
   font-family: 'Nevis-Bold';
-  src: url('Nevis-Bold.ttf.woff') format('woff'),
-       url('Nevis-Bold.ttf.svg#Nevis-Bold') format('svg'),
-       url('Nevis-Bold.ttf.eot'),
-       url('Nevis-Bold.ttf.eot?#iefix') format('embedded-opentype');
+  src: url('../fonts/Nevis-Bold.ttf.woff') format('woff'),
+       url('../fonts/Nevis-Bold.ttf.svg#Nevis-Bold') format('svg'),
+       url('../fonts/Nevis-Bold.ttf.eot'),
+       url('../fonts/Nevis-Bold.ttf.eot?#iefix') format('embedded-opentype');
 }
 
+//font stacks
 $heading-font: Nevis-Bold, Arial, sans-serif;
 $body-font: Helvetica, Arial, sans-serif;
-
 
 //colors
 $primary-color: #ff94ac;
@@ -20,27 +20,6 @@ $c-d-1: darken($primary-color, 5%);
 $c-d-2: darken($primary-color, 10%);
 $c-d-3: darken($primary-color, 15%);
 
-
-div {
-  @include size(100px);
-  margin-bottom: 20px;
-}
-
-div:nth-of-type(1) {
-  background: $c-l-1;
-}
-div:nth-of-type(2) {
-  background: $c-l-2;
-}
-div:nth-of-type(3) {
-  background: $c-l-3;
-}
-div:nth-of-type(4) {
-  background: $c-d-1;
-}
-div:nth-of-type(5) {
-  background: $c-d-2;
-}
-div:nth-of-type(6) {
-  background: $c-d-3;
-}
+//breakpoints
+$tablet-bp: 'screen and (min-width: 768px)';
+$desktop-bp: 'screen and (min-width: 992px)';
