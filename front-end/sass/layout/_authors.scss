@@ -1,0 +1,14 @@
+#authors {
+  @include grid-container;
+
+  .card {
+    @include grid-column(12);
+    min-height: 300px;
+    background: green;
+    margin-top: 40px;
+
+    @include desktop-bp {
+      @include grid-column(6);
+    }
+  }
+}

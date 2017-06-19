@@ -1,0 +1,39 @@
+#landing-hero {
+  background-image: url('../img/landing-bg.jpg');
+  background-size: auto 100%;
+  background-position: right;
+  background-repeat: no-repeat;
+
+  .mesh {
+    position: fixed;
+    @include size(100vw, calc(100vh - 80px));
+    left: 0;
+    bottom: 0;
+    background: rgba($c-d-3, 0.3);
+    z-index: 5;
+  }
+
+  .title {
+    h1 {
+      font-size: 35px;
+      text-shadow: 2px 2px 1px rgba(0,0,0,0.5);
+      border-bottom: 2px solid $c-l-2;
+      margin-bottom: 18px;
+      display: inline-block;
+
+      @include desktop-bp {
+        font-size: 60px;
+      }
+    }
+
+    p {
+      font-size: 18px;
+      color: $c-d-1;
+      text-shadow: 1px 1px 1px rgba(0,0,0,0.9);
+
+      @include desktop-bp {
+        font-size: 30px;
+      }
+    }
+  }
+}

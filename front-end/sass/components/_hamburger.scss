@@ -1,0 +1,117 @@
+.burger {
+  width: 50px;
+  height: 35px;
+  position: relative;
+  transform: scale(.7) translateX(70px);
+  cursor: pointer;
+  z-index: 120 !important;
+
+  @include desktop-bp {
+    display: none;
+  }
+
+  span {
+    display: block;
+    background-color: #fff;
+    height: 5px;
+    width: 50px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 1;
+    transition: all .75s;
+    transition-delay: .5s;
+  }
+
+  span:nth-child(1) {
+    top: 0;
+    transform-origin: 0 2.5px;
+  }
+
+  span:nth-child(2) {
+    top: 15px;
+  }
+
+  span:nth-child(3) {
+    transform-origin: 0 2.5px;
+    top: 30px;
+  }
+
+  .toggle-top {
+    animation: spin-right 1s forwards;
+  }
+
+  .toggle-top-reverse {
+    animation: spin-right-reverse 1s forwards;
+  }
+
+  .middle {
+    opacity: 0;
+  }
+
+  .toggle-bottom {
+    transform-origin: left center;
+    animation: spin-left 1s forwards;
+  }
+
+  .toggle-bottom-reverse {
+    transform-origin: left center;
+    animation: spin-left-reverse 1s forwards;
+  }
+
+  @keyframes spin-right{
+    0% {
+      transform: rotate(0deg);
+    }
+    20% {
+      transform: rotate(-35deg);
+    }
+    100% {
+      transform: rotate(405deg);
+      top: -2.5px;
+      left: 7.5px;
+    }
+  }
+
+  @keyframes spin-left {
+    0% {
+      transform: rotate(0deg);
+    }
+    20% {
+      transform: rotate(35deg);
+    }
+    100% {
+      transform: rotate(-405deg);
+      top: 32.5px;
+      left: 7.5px;
+    }
+  }
+
+  @keyframes spin-right-reverse {
+    0% {
+      transform: rotate(405deg);
+      top: -2.5px;
+      left: 7.5px;
+    }
+    20% {
+      transform: rotate(440deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes spin-left-reverse {
+    0% {
+      transform: rotate(-405deg);
+      top: 32.5px;
+      left: 7.5px;
+    }
+    20% {
+      transform: rotate(-440deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+}

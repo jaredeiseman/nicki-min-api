@@ -4,4 +4,12 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $heading-font;
+  color: $c-d-2;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+p {
+  margin-bottom: 20px;
 }

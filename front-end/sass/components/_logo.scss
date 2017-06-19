@@ -1,0 +1,22 @@
+.logo {
+  font-family: 'Droid Sans', sans-serif;
+  border: 2px solid white;
+  color: white;
+  padding: 4px 9px 4px 5px;
+  border-radius: 4px;
+  letter-spacing: -3px;
+  font-size: 30px;
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  span:nth-child(2) {
+    margin-left: -4px;
+  }
+
+  span:nth-child(3) {
+    margin-left: -2px;
+  }
+}

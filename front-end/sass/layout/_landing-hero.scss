@@ -1,0 +1,29 @@
+#landing-hero {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 80px);
+
+  .title {
+    position: absolute;
+    top: 21%;
+    left: -15px;
+    transform: rotate(-60deg);
+
+    @include tablet-bp {
+      left: 10%;
+      transform: rotate(0);
+    }
+
+    p {
+      max-width: 200px;
+
+      @include tablet-bp {
+        max-width: 280px;
+      }
+
+      @include desktop-bp {
+        max-width: 500px;
+      }
+    }
+  }
+}
