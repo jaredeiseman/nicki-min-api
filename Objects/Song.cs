@@ -123,11 +123,9 @@ namespace NickiMinAPI.Objects
     }
     public static Song Find(string title)
     {
-      //title = "moment-4-life"
       string fixedTitle = CultureInfo.CurrentCulture
                          .TextInfo.ToTitleCase(
                           String.Join(" ", title.Split('-')));
-      //fixedTitle = "Moment 4 Life"
 
       SqlConnection conn = DB.Connection();
       conn.Open();

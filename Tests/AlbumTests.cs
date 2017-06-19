@@ -60,6 +60,17 @@ namespace NickiMinAPI
       Assert.Equal(testAlbum, foundAlbum);
     }
     [Fact]
+    public void Album_Find_FindsAlbumInDatabaseByTitle()
+    {
+      //Arrange
+      Album testAlbum = new Album("Pink Friday", new DateTime(2010, 11, 19));
+      testAlbum.Save();
+      //Act
+      Album foundAlbum = Album.Find("pink-friday");
+      //Assert
+      Assert.Equal(testAlbum, foundAlbum);
+    }
+    [Fact]
     public void Album_Delete_RemovesAlbumFromDatabase()
     {
       //Arrange

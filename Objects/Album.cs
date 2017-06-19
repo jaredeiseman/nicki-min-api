@@ -114,6 +114,40 @@ namespace NickiMinAPI.Objects
       }
       return foundAlbum;
     }
+    public static Album Find(string title)
+    {
+      string fixedTitle = CultureInfo.CurrentCulture
+                         .TextInfo.ToTitleCase(
+                          String.Join(" ", title.Split('-')));
+
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("SELECT DISTINCT * FROM albums WHERE title = @AlbumTitle;", conn);
+      cmd.Parameters.Add(new SqlParameter("@AlbumTitle", fixedTitle));
+      SqlDataReader rdr = cmd.ExecuteReader();
+
+      int albumId = 0;
+      string albumTitle = null;
+      DateTime albumReleaseDate = new DateTime();
+      while(rdr.Read())
+      {
+        albumId = rdr.GetInt32(0);
+        albumTitle = rdr.GetString(1);
+        albumReleaseDate = Convert.ToDateTime(rdr.GetString(2));
+      }
+      Album foundAlbum = new Album(albumTitle, albumReleaseDate, albumId);
+
+      if (rdr != null)
+      {
+        rdr.Close();
+      }
+      if (conn != null)
+      {
+        conn.Close();
+      }
+      return foundAlbum;
+    }
     public List<Song> GetSongs()
     {
       List<Song> allSongs = new List<Song>{};
