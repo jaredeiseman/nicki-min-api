@@ -1,0 +1,96 @@
+.swirly {
+  position: relative;
+  @include size(352px);
+  left: calc(50% - 176px);
+  margin-top: 40px;
+
+  .element {
+    display: block;
+    height:60px;
+    width:60px;
+    background-position: center;
+    position: absolute;
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    overflow: hidden;
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+      background-color: #f2f2f2;
+      background-image: url('http://www.jaredeiseman.com/image1.JPG');
+      background-size: 350px 455px;
+    }
+
+    33% {
+      transform: rotate(360deg);
+      background-color: #f2f2f2;
+      background-image: url('http://www.jaredeiseman.com/image2.JPG');
+      background-size: 350px 455px;
+    }
+    66% {
+      transform: rotate(0deg);
+      background-color: #f2f2f2;
+      background-image: url('http://www.jaredeiseman.com/image3.JPG');
+      background-size: 350px 455px;
+    }
+    100% {
+      transform: rotate(360deg);
+      background-color: #f2f2f2;
+      background-image: url('http://www.jaredeiseman.com/image4.JPG');
+      background-size: 350px 455px;
+    }
+  }
+  @-webkit-keyframes rotate {
+    0% {
+      -webkit-transform: rotate(0deg);
+      background-color: #f2f2f2;
+      background-image: url('http://www.jaredeiseman.com/image1.JPG');
+      background-size: 350px 455px;
+    }
+
+    33% {
+      -webkit-transform: rotate(360deg);
+      background-color: #f2f2f2;
+      background-image: url('http://www.jaredeiseman.com/image2.JPG');
+      background-size: 350px 455px;
+    }
+
+    66% {
+      -webkit-transform: rotate(0deg);
+      background-color: #f2f2f2;
+      background-image: url('http://www.jaredeiseman.com/image3.JPG');
+      background-size: 350px 455px;
+    }
+
+    100% {
+      -webkit-transform: rotate(360deg);
+      background-color: #f2f2f2;
+      background-image: url('http://www.jaredeiseman.com/image4.JPG');
+      background-size: 350px 455px;
+    }
+  }
+  @-moz-keyframes rotate {
+    0% {
+      -moz-transform: rotate(0deg);
+      background-color: #8BC34A;
+      background-image: url('http://www.jaredeiseman.com/image2.JPG');
+      background-size: 350px 455px;
+    }
+    15% {
+      -moz-transform: rotate(0deg);
+    }
+    90% {
+      -moz-transform: rotate(360deg);
+    }
+    100% {
+      -moz-transform: rotate(360deg);
+      background-color: #f2f2f2;
+      background-image: url('http://www.jaredeiseman.com/image3.JPG');
+      background-size: 350px 455px;
+    }
+  }
+}
