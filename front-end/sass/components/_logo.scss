@@ -7,6 +7,11 @@
   letter-spacing: -3px;
   font-size: 30px;
 
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
   span:nth-child(2) {
     margin-left: -4px;
   }
