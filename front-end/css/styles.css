@@ -1,0 +1,43 @@
+@font-face {
+  font-family: 'Nevis-Bold';
+  src: url("Nevis-Bold.ttf.woff") format("woff"), url("Nevis-Bold.ttf.svg#Nevis-Bold") format("svg"), url("Nevis-Bold.ttf.eot"), url("Nevis-Bold.ttf.eot?#iefix") format("embedded-opentype");
+}
+div {
+  height: 100px;
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+div:nth-of-type(1) {
+  background: #ffaec0;
+}
+
+div:nth-of-type(2) {
+  background: #ffc7d4;
+}
+
+div:nth-of-type(3) {
+  background: #ffe1e7;
+}
+
+div:nth-of-type(4) {
+  background: #ff7b98;
+}
+
+div:nth-of-type(5) {
+  background: #ff6184;
+}
+
+div:nth-of-type(6) {
+  background: #ff4871;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Nevis-Bold, Arial, sans-serif;
+}
+
+/*# sourceMappingURL=styles.css.map */
