@@ -13,12 +13,17 @@ namespace NickiMinAPI
         return View["index.cshtml"];
       };
       Get["/{page}"] = parameters => {
+        Console.WriteLine("Triggered dynamic route: " + parameters.page);
         return View[parameters.page + ".cshtml"];
       };
       Get["/api/songs/{title}"] = parameters => {
-        Song foundSong = Song.Find(parameters.title);
-        return View["REPLACEME.cshtml"];
+        string title = parameters.title;
+        Song foundSong = Song.Find(title);
+        return foundSong;
+        // return Json.Encode(foundSong);
+        // return new JavaScriptSerializer().Serialize(foundSong);
       };
+
     }
   }
 }
