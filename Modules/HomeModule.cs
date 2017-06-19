@@ -75,6 +75,22 @@ namespace NickiMinAPI
         Dictionary<string, int> results = Count.AnAlbum(foundAlbum);
         return results;
       };
+      Get["/form"] = _ => {
+        List<Album> allAlbums = Album.GetAll();
+        return View["form.cshtml", allAlbums];
+      };
+      Post["/form/album"] = _ => {
+        List<Album> allAlbums = Album.GetAll();
+        Album newAlbum = new Album(Request.Form["album-name"], Request.Form["album-date"]);
+        newAlbum.Save();
+        return View["form.cshtml", allAlbums];
+      };
+      Post["/form/song"] = _ => {
+        List<Album> allAlbums = Album.GetAll();
+        Song newSong = new Song(Request.Form["song-name"], Request.Form["song-lyrics"], Request.Form["song-album"]);
+        newSong.Save();
+        return View["form.cshtml", allAlbums];
+      };
     }
   }
 }

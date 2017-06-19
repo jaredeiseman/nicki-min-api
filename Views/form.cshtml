@@ -1,0 +1,20 @@
+<form class="" action="/form/album" method="post">
+  <label for="album-title">Album Name: </label>
+  <input type="text" name="album-title">
+  <label for="album-date">Album Release Date: </label>
+  <input type="date" name="album-date">
+  <button type="submit" name="button">Submit Album</button>
+</form>
+<form class="" action="/form/song" method="post">
+  <label for="song-title">Song Name: </label>
+  <input type="text" name="song-title">
+  <select class="" name="song-album">
+    @foreach (var album in @Model)
+    {
+      <option value="@album.Id">@album.Name</option>
+    }
+  </select>
+  <label for="song-lyrics">Song Lyrics: </label>
+  <input type="text" name="song-lyrics">
+  <button type="submit" name="button">Submit Song</button>
+</form>
