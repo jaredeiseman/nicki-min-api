@@ -64,6 +64,19 @@ namespace NickiMinAPI
       Assert.Equal(testSong, foundSong);
     }
     [Fact]
+    public void Song_Find_FindsSongInDatabaseByTitle()
+    {
+      //Arrange
+      Album testAlbum = new Album("Pink Friday", new DateTime(2010, 11, 19));
+      testAlbum.Save();
+      Song testSong = new Song("Moment 4 Life", "...something something Moment...", testAlbum.Id);
+      testSong.Save();
+      //Act
+      Song foundSong = Song.Find("moment-4-life");
+      //Assert
+      Assert.Equal(testSong, foundSong);
+    }
+    [Fact]
     public void Song_Delete_RemovesSongFromDatabase()
     {
       //Arrange

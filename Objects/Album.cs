@@ -114,6 +114,34 @@ namespace NickiMinAPI.Objects
       }
       return foundAlbum;
     }
+    public List<Song> GetSongs()
+    {
+      List<Song> allSongs = new List<Song>{};
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("SELECT * FROM songs WHERE album_id = @AlbumId;", conn);
+      cmd.Parameters.Add(new SqlParameter("@AlbumId", this.Id));
+      SqlDataReader rdr = cmd.ExecuteReader();
+      while(rdr.Read())
+      {
+        int songId = rdr.GetInt32(0);
+        string songTitle = rdr.GetString(1);
+        string songLyrics = rdr.GetString(2);
+        int songAlbum = rdr.GetInt32(3);
+        Song newSong = new Song(songTitle, songLyrics, songAlbum, songId);
+        allSongs.Add(newSong);
+      }
+      if (rdr != null)
+      {
+        rdr.Close();
+      }
+      if (conn != null)
+      {
+        conn.Close();
+      }
+      return allSongs;
+    }
     public void Delete()
     {
       SqlConnection conn = DB.Connection();

@@ -15,6 +15,10 @@ namespace NickiMinAPI
       Get["/{page}"] = parameters => {
         return View[parameters.page + ".cshtml"];
       };
+      Get["/api/songs/{title}"] = parameters => {
+        Song foundSong = Song.Find(parameters.title);
+        return View["REPLACEME.cshtml"];
+      };
     }
   }
 }

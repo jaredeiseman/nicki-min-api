@@ -121,6 +121,44 @@ namespace NickiMinAPI.Objects
       }
       return foundSong;
     }
+    public static Song Find(string title)
+    {
+      //title = "moment-4-life"
+      string fixedTitle = CultureInfo.CurrentCulture
+                         .TextInfo.ToTitleCase(
+                          String.Join(" ", title.Split('-')));
+      //fixedTitle = "Moment 4 Life"
+
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("SELECT DISTINCT * FROM songs WHERE title = @SongTitle;", conn);
+      cmd.Parameters.Add(new SqlParameter("@SongTitle", fixedTitle));
+      SqlDataReader rdr = cmd.ExecuteReader();
+
+      int songId = 0;
+      string songTitle = null;
+      string songLyrics = null;
+      int songAlbum = 0;
+      while(rdr.Read())
+      {
+        songId = rdr.GetInt32(0);
+        songTitle = rdr.GetString(1);
+        songLyrics = rdr.GetString(2);
+        songAlbum = rdr.GetInt32(3);
+      }
+      Song foundSong = new Song(songTitle, songLyrics, songAlbum, songId);
+
+      if (rdr != null)
+      {
+        rdr.Close();
+      }
+      if (conn != null)
+      {
+        conn.Close();
+      }
+      return foundSong;
+    }
     public void Delete()
     {
       SqlConnection conn = DB.Connection();

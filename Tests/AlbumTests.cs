@@ -16,6 +16,7 @@ namespace NickiMinAPI
     }
     public void Dispose()
     {
+      Song.DeleteAll();
       Album.DeleteAll();
     }
     [Fact]
@@ -85,6 +86,22 @@ namespace NickiMinAPI
       Album.DeleteAll();
       int actual = Album.GetAll().Count;
       int expected = 0;
+      //Assert
+      Assert.Equal(expected, actual);
+    }
+    [Fact]
+    public void Album_GetSongs_ReturnsAllSongsOnAlbum()
+    {
+      //Arrange
+      Album testAlbum = new Album("Pink Friday", new DateTime(2010, 11, 19));
+      testAlbum.Save();
+      Song testCase1 = new Song("Super Bass", "That super bass, etc.", testAlbum.Id);
+      testCase1.Save();
+      Song testCase2 = new Song("Moment 4 Life", "...something something Moment...", testAlbum.Id);
+      testCase2.Save();
+      //Act
+      List<Song> actual = testAlbum.GetSongs();
+      List<Song> expected = new List<Song> {testCase1, testCase2};
       //Assert
       Assert.Equal(expected, actual);
     }
