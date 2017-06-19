@@ -1,5 +1,5 @@
 using Nancy;
-using MusicianTracker.Objects;
+using NickiMinAPI.Objects;
 using System;
 using System.Collections.Generic;
 
@@ -9,6 +9,9 @@ namespace NickiMinAPI
   {
     public HomeModule()
     {
+      Get["/"] = parameters => {
+        return View["index.cshtml"];
+      };
       Get["/{page}"] = parameters => {
         return View[parameters.page + ".cshtml"];
       };

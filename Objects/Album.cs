@@ -11,24 +11,26 @@ namespace NickiMinAPI.Objects
     public string Title { get; set; }
     public DateTime ReleaseDate { get; set; }
 
-    public Band(string name, int id = 0)
+    public Album(string title, DateTime releaseDate, int id = 0)
     {
-      string titleCase = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name);
+      string titleCase = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(title);
       Id = id;
-      Name = titleCase;
+      Title = titleCase;
+      ReleaseDate = releaseDate;
     }
-    public override bool Equals(System.Object otherBand)
+    public override bool Equals(System.Object otherAlbum)
     {
-        if (!(otherBand is Band))
+        if (!(otherAlbum is Album))
         {
           return false;
         }
         else
         {
-          Band newBand = (Band) otherBand;
-          bool idEquality = (this.Id == newBand.Id);
-          bool nameEquality = (this.Name == newBand.Name);
-          return (idEquality && nameEquality);
+          Album newAlbum = (Album) otherAlbum;
+          bool idEquality = (this.Id == newAlbum.Id);
+          bool titleEquality = (this.Title == newAlbum.Title);
+          bool releaseEquality = (this.ReleaseDate == newAlbum.ReleaseDate);
+          return (idEquality && titleEquality && releaseEquality);
         }
     }
 
@@ -37,10 +39,9 @@ namespace NickiMinAPI.Objects
       SqlConnection conn = DB.Connection();
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("INSERT INTO bands (name) OUTPUT INSERTED.id VALUES (@BandName);", conn);
-
-      SqlParameter nameParameter = new SqlParameter("@BandName", this.Name);
-      cmd.Parameters.Add(nameParameter);
+      SqlCommand cmd = new SqlCommand("INSERT INTO albums (title, release_date) OUTPUT INSERTED.id VALUES (@AlbumTitle, @AlbumReleaseDate);", conn);
+      cmd.Parameters.Add(new SqlParameter("@AlbumTitle", this.Title));
+      cmd.Parameters.Add(new SqlParameter("@AlbumReleaseDate", this.ReleaseDate));
       SqlDataReader rdr = cmd.ExecuteReader();
 
       while(rdr.Read())
@@ -57,20 +58,21 @@ namespace NickiMinAPI.Objects
         conn.Close();
       }
     }
-    public static List<Band> GetAll()
+    public static List<Album> GetAll()
     {
-      List<Band> allBands = new List<Band>{};
+      List<Album> allAlbums = new List<Album>{};
       SqlConnection conn = DB.Connection();
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("SELECT * FROM bands;", conn);
+      SqlCommand cmd = new SqlCommand("SELECT * FROM albums;", conn);
       SqlDataReader rdr = cmd.ExecuteReader();
       while(rdr.Read())
       {
-        int bandId = rdr.GetInt32(0);
-        string bandName = rdr.GetString(1);
-        Band newBand = new Band(bandName, bandId);
-        allBands.Add(newBand);
+        int albumId = rdr.GetInt32(0);
+        string albumTitle = rdr.GetString(1);
+        DateTime albumReleaseDate = Convert.ToDateTime(rdr.GetString(2));
+        Album newAlbum = new Album(albumTitle, albumReleaseDate, albumId);
+        allAlbums.Add(newAlbum);
       }
       if (rdr != null)
       {
@@ -80,28 +82,27 @@ namespace NickiMinAPI.Objects
       {
         conn.Close();
       }
-      return allBands;
+      return allAlbums;
     }
-    public static Band Find(int id)
+    public static Album Find(int id)
     {
       SqlConnection conn = DB.Connection();
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("SELECT * FROM bands WHERE id = @BandId;", conn);
-      SqlParameter bandIdParameter = new SqlParameter();
-      bandIdParameter.ParameterName = "@BandId";
-      bandIdParameter.Value = id.ToString();
-      cmd.Parameters.Add(bandIdParameter);
+      SqlCommand cmd = new SqlCommand("SELECT * FROM albums WHERE id = @AlbumId;", conn);
+      cmd.Parameters.Add(new SqlParameter("@AlbumId", id.ToString()));
       SqlDataReader rdr = cmd.ExecuteReader();
 
-      int foundBandId = 0;
-      string foundBandName = null;
+      int albumId = 0;
+      string albumTitle = null;
+      DateTime albumReleaseDate = new DateTime();
       while(rdr.Read())
       {
-        foundBandId = rdr.GetInt32(0);
-        foundBandName = rdr.GetString(1);
+        albumId = rdr.GetInt32(0);
+        albumTitle = rdr.GetString(1);
+        albumReleaseDate = Convert.ToDateTime(rdr.GetString(2));
       }
-      Band foundBand = new Band(foundBandName, foundBandId);
+      Album foundAlbum = new Album(albumTitle, albumReleaseDate, albumId);
 
       if (rdr != null)
       {
@@ -111,104 +112,15 @@ namespace NickiMinAPI.Objects
       {
         conn.Close();
       }
-      return foundBand;
-    }
-    public void Update(string newName)
-    {
-      SqlConnection conn = DB.Connection();
-      conn.Open();
-
-      SqlCommand cmd = new SqlCommand("UPDATE bands SET name = @NewName OUTPUT INSERTED.name WHERE id = @BandId;", conn);
-      SqlParameter newNameParameter = new SqlParameter("@NewName", newName);
-      cmd.Parameters.Add(newNameParameter);
-      SqlParameter bandIdParameter = new SqlParameter("@BandId", this.Id);
-      cmd.Parameters.Add(bandIdParameter);
-
-      SqlDataReader rdr = cmd.ExecuteReader();
-
-      while(rdr.Read())
-      {
-        this.Name = rdr.GetString(0);
-      }
-      if (rdr != null)
-      {
-        rdr.Close();
-      }
-      if (conn != null)
-      {
-        conn.Close();
-      }
-    }
-    public void AddVenue(Venue venue)
-    {
-      SqlConnection conn = DB.Connection();
-      conn.Open();
-
-      SqlCommand cmd = new SqlCommand("INSERT INTO bands_venues (band_id, venue_id) VALUES (@BandId, @VenueId);", conn);
-
-      SqlParameter bandIdParameter = new SqlParameter();
-      bandIdParameter.ParameterName = "@BandId";
-      bandIdParameter.Value = this.Id;
-      cmd.Parameters.Add(bandIdParameter);
-
-      SqlParameter venueIdParameter = new SqlParameter();
-      venueIdParameter.ParameterName = "@VenueId";
-      venueIdParameter.Value = venue.Id;
-      cmd.Parameters.Add(venueIdParameter);
-
-      cmd.ExecuteNonQuery();
-      if (conn != null)
-      {
-      conn.Close();
-      }
-    }
-    public List<Venue> GetVenues()
-    {
-      SqlConnection conn = DB.Connection();
-     conn.Open();
-
-     SqlCommand cmd = new SqlCommand("SELECT venues.* FROM bands JOIN bands_venues ON (bands.id = bands_venues.band_id) JOIN venues ON (bands_venues.venue_id = venues.id)  WHERE bands.id = @BandId;", conn);
-
-     SqlParameter bandIdParameter = new SqlParameter();
-     bandIdParameter.ParameterName = "@BandId";
-     bandIdParameter.Value = this.Id;
-
-     cmd.Parameters.Add(bandIdParameter);
-     SqlDataReader rdr = cmd.ExecuteReader();
-
-     List<Venue> venues = new List<Venue>{};
-
-     while(rdr.Read())
-     {
-       int venueId = rdr.GetInt32(0);
-       string venueName = rdr.GetString(1);
-
-       Venue newVenue = new Venue(venueName, venueId);
-       venues.Add(newVenue);
-     }
-
-     if (rdr != null)
-     {
-       rdr.Close();
-     }
-     if (conn != null)
-     {
-       conn.Close();
-     }
-     return venues;
+      return foundAlbum;
     }
     public void Delete()
     {
       SqlConnection conn = DB.Connection();
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("DELETE FROM bands WHERE id = @BandId;", conn);
-
-      SqlParameter bandIdParameter = new SqlParameter();
-      bandIdParameter.ParameterName = "@BandId";
-      bandIdParameter.Value = this.Id;
-
-      cmd.Parameters.Add(bandIdParameter);
+      SqlCommand cmd = new SqlCommand("DELETE FROM albums WHERE id = @AlbumId;", conn);
+      cmd.Parameters.Add(new SqlParameter("@AlbumId", this.Id));
       cmd.ExecuteNonQuery();
 
       if (conn != null)
@@ -220,10 +132,7 @@ namespace NickiMinAPI.Objects
     {
       SqlConnection conn = DB.Connection();
       conn.Open();
-      SqlCommand cmd = new SqlCommand("DELETE FROM bands;", conn);
-      cmd.ExecuteNonQuery();
-
-      cmd = new SqlCommand("DELETE FROM bands_venues;", conn);
+      SqlCommand cmd = new SqlCommand("DELETE FROM albums;", conn);
       cmd.ExecuteNonQuery();
       conn.Close();
     }
