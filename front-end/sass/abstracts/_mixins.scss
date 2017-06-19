@@ -1,0 +1,20 @@
+@mixin tablet-bp {
+  @media #{$tablet-bp} {
+    @content;
+  }
+}
+@mixin desktop-bp {
+  @media #{$desktop-bp} {
+    @content;
+  }
+}
+
+
+// icon mixin
+@mixin icon($path, $width, $height: $width) {
+  background-image: url($path);
+  background-repeat: no-repeat;
+  background-size: $width $height;
+  background-position: center;
+  display: inline-block;
+}

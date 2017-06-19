@@ -1,0 +1,27 @@
+$social-size: 40px;
+
+.social-icons {
+  z-index: 20 !important;
+
+  .twitter, .github {
+    @include size($social-size);
+    transition: background-image .3s;
+    cursor: pointer;
+  }
+
+  .twitter {
+    @include icon('../img/twit.png', $social-size);
+
+    &:hover {
+      background-image: url('../img/twit-white.png');
+    }
+  }
+
+  .github {
+    @include icon('../img/gh.png', $social-size);
+
+    &:hover {
+      background-image: url('../img/gh-white.png');
+    }
+  }
+}

@@ -1,0 +1,5 @@
+.social-icons {
+  @include size(90px, 30px);
+  display: flex;
+  justify-content: space-between;
+}

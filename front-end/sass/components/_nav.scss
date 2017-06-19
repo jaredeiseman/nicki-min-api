@@ -1,0 +1,44 @@
+nav {
+  a {
+    font-family: $heading-font;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    padding: 30px 20px;
+    transition: color .3s, text-shadow .3s, background .3s;
+
+    &:hover {
+      color: $c-d-1;
+      background: black;
+      text-shadow: 1px 1px 1px rgba(0, 0 , 0, 0.5);
+    }
+  }
+  .desktop-nav {
+
+
+  }
+
+  .mobile-nav {
+    @include size(250px, 100vh);
+    padding: 50px 25px 25px;
+    position: fixed;
+    right: -250px;
+    top: 0;
+    background: $c-d-3;
+    z-index: 100;
+
+    a {
+      display: block;
+      font-size: 20px;
+      white-space: nowrap;
+      padding: 20px 0;
+      border-bottom: 1px solid $c-l-1;
+
+      &:hover {
+        color: white;
+        background: transparent;
+        text-shadow: 1px 1px 1px rgba(0, 0 , 0, 0.5);
+      }
+    }
+  }
+}

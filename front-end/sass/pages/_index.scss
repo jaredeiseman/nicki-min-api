@@ -1,0 +1,11 @@
+.landing-container {
+  @include size(100%, 100%);
+
+  .social-icons {
+    position: fixed;
+    bottom: 20px;
+    left: 10px;
+
+
+  }
+}
