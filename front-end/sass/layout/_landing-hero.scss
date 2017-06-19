@@ -1,0 +1,11 @@
+#landing-hero {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 80px);
+
+  .title {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+  }
+}

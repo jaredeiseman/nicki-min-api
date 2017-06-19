@@ -14,6 +14,11 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100vh;
+  width: 100vw;
+}
+
 body {
   font-family: Helvetica, Arial, sans-serif;
 }
@@ -152,6 +157,39 @@ nav ul.desktop-nav li {
 }
 nav ul.mobile-nav li {
   display: none;
+}
+
+#landing-hero {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 80px);
+}
+#landing-hero .title {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+}
+
+.social-icons {
+  height: 30px;
+  width: 80px;
+  display: flex;
+  justify-content: space-between;
+}
+.social-icons .twitter, .social-icons .github {
+  height: 30px;
+  width: 30px;
+  background: black;
+}
+
+.landing-container {
+  height: 100%;
+  width: 100%;
+}
+.landing-container .social-icons {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
 }
 
 /*# sourceMappingURL=styles.css.map */
