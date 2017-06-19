@@ -17,7 +17,7 @@ namespace NickiMinAPI
         return View[parameters.page + ".cshtml"];
       };
       Get["/api/all"] = _ => {
-        List<Album> allAlbums = Albums.GetAll();
+        List<Album> allAlbums = Album.GetAll();
         List<object> allResponse = new List <object> {};
         foreach (Album album in allAlbums)
         {
@@ -25,11 +25,11 @@ namespace NickiMinAPI
           foreach (Song song in album.GetSongs())
           {
             object newSong = new { title = song.Title, lyrics = song.Lyrics};
-            alltracks.Add(newSong);
+            allTracks.Add(newSong);
           }
           object albumResponse = new { title = album.Title,
             releaseDate = album.ReleaseDate.ToString(),
-            allTracks = albumTracks
+            tracks = allTracks
           };
           allResponse.Add(albumResponse);
         }
@@ -59,9 +59,21 @@ namespace NickiMinAPI
                                    };
         return albumResponse;
       };
-      Get["/api/count"] = _ => {
-
-        return foundSong;
+      Get["/api/all/count"] = _ => {
+        Dictionary<string, int> results = Count.All();
+        return results;
+      };
+      Get["/api/songs/count/{title}"] = parameters => {
+        string title = parameters.title;
+        Song foundSong = Song.Find(title);
+        Dictionary<string, int> results = Count.Words(foundSong.Lyrics);
+        return results;
+      };
+      Get["/api/albums/count/{title}"] = parameters => {
+        string title = parameters.title;
+        Album foundAlbum = Album.Find(title);
+        Dictionary<string, int> results = Count.AnAlbum(foundAlbum);
+        return results;
       };
     }
   }

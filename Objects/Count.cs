@@ -8,10 +8,11 @@ namespace NickiMinAPI.Objects
 {
   public class Count
   {
-    public static Dictionary<string, int> TheSong(Song song)
+    public static Dictionary<string, int> Words(string lyrics)
     {
+      //TODO:Refactor this so that each. Add a Dictionary as an optional param which the function can optionally operate on. The will circumvent the problem of combining dictionaries in the album and discography count functions.
       Dictionary<string, int> counts = new Dictionary<string, int> {};
-      string withoutBracketedText = Regex.Replace(song.Lyrics, @"\[.*?\]", "");
+      string withoutBracketedText = Regex.Replace(lyrics, @"\[.*?\]", "");
       string withoutPunctuation = Regex.Replace(withoutBracketedText, "[^a-zA-Z0-9' ]", "");
       string[] corpusSplit = withoutPunctuation.ToLower().Split(default(string[]), StringSplitOptions.RemoveEmptyEntries);
       foreach (string word in corpusSplit) {
@@ -26,67 +27,27 @@ namespace NickiMinAPI.Objects
       }
       return counts;
     }
-    public static Dictionary<string, int> TheAlbum(Album album)
+    public static Dictionary<string, int> AnAlbum(Album album)
     {
-      Dictionary<string, int> counts = new Dictionary<string, int> {};
+      string corpus = "";
       foreach (Song song in album.GetSongs())
       {
-        string withoutBracketedText = Regex.Replace(song.Lyrics, @"\[.*?\]", "");
-        string withoutPunctuation = Regex.Replace(withoutBracketedText, "[^a-zA-Z0-9' ]", "");
-        string[] corpusSplit = withoutPunctuation.ToLower().Split(default(string[]), StringSplitOptions.RemoveEmptyEntries);
-        foreach (string word in corpusSplit) {
-          if (!counts.ContainsKey(word)) {
-            counts.Add(word, 0);
-          }
-        }
-        foreach (string word in corpusSplit) {
-          if (counts.ContainsKey(word)) {
-            counts[word] ++;
-          }
-        }
-      //TODO: There has to be a better way!
-      //   Dictionary<string, int> songCount = Count.TheSong(song);
-      //
-      //   foreach (int countamount in songCount)
-      //   {
-      //     if (counts.containsKey())
-      //   }
+        corpus += song.Lyrics + " ";
       }
+      Dictionary<string, int> counts = Count.Words(corpus);
+      return counts;
+    }
+    public static Dictionary<string, int> All()
+    {
+      string corpus = "";
+      foreach (Album album in Album.GetAll())
+      {
+        foreach (Song song in album.GetSongs()) {
+          corpus += song.Lyrics + " ";
+        }
+      }
+      Dictionary<string, int> counts = Count.Words(corpus);
       return counts;
     }
   }
 }
-
-
-// using System;
-// using System.Collections.Generic;
-//
-// namespace WordCounter.Objects
-// {
-//   public class RepeatCounter
-//   {
-//     private string _corpus;
-//     private string[] _corpusSplit;
-//     private string[] _searchTerms;
-//     private Dictionary<string, int> _counts = new Dictionary<string, int> {};
-//
-//     public RepeatCounter(string corpus, string searchTerms)
-//     {
-//       _corpus = corpus;
-//       _corpusSplit = _corpus.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries);
-//       _searchTerms = searchTerms.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries);
-//     }
-//     public Dictionary<string, int> CountRepeats()
-//     {
-//       foreach (string query in _searchTerms) {
-//         _counts.Add(query, 0);
-//       }
-//       foreach (string word in _corpusSplit) {
-//         if (_counts.ContainsKey(word)) {
-//           _counts[word] ++;
-//         }
-//       }
-//       return _counts;
-//     }
-//   }
-// }
