@@ -1,0 +1,17 @@
+#lorem-minaj {
+  @include grid-container;
+
+  h2, #lorem-generator, #lorem-output {
+    @include grid-column(12);
+
+    margin-bottom: 30px;
+  }
+
+  #lorem-output {
+    min-height: 100px;
+    background-color: $c-l-3;
+    border: 1px solid $c-l-1;
+    padding: 10px;
+    border-radius: 5px;
+  }
+}
