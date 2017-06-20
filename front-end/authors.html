@@ -38,31 +38,76 @@
       </header>
       <section id="main-layout">
         <div class="content">
-          <div class="swirly">
-            <span id="" class="element"></span>
-            <span id="" class="element"></span>
-            <span id="" class="element"></span>
-            <span id="" class="element"></span>
-            <span id="" class="element"></span>
-            <span id="" class="element"></span>
-            <span id="" class="element"></span>
-            <span id="" class="element"></span>
-            <span id="" class="element"></span>
-            <span id="" class="element"></span>
-            <span id="" class="element"></span>
-          </div>
           <section id="authors">
+            <h2 class="about-header">About The Authors</h2>
             <div class="card">
-
+              <div class="about-photo">
+                <!-- <img src="http://fillmurray.com/850/350" alt="" /> -->
+              </div>
+              <div class="about-bio">
+                <div class="social-icons">
+                  <span class="twitter">&nbsp;</span>
+                  <span class="github">&nbsp;</span>
+                </div>
+                <h4>Joe Parsley</h4>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+              </div>
             </div>
             <div class="card">
-
+              <div class="about-photo">
+                <!-- <img src="http://fillmurray.com/850/350" alt="" /> -->
+              </div>
+              <div class="about-bio">
+                <div class="social-icons">
+                  <span class="twitter">&nbsp;</span>
+                  <span class="github">&nbsp;</span>
+                </div>
+                <h4>Jared Luedtke</h4>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+              </div>
             </div>
             <div class="card">
-
+              <div class="about-photo">
+                <!-- <img src="http://fillmurray.com/850/350" alt="" /> -->
+              </div>
+              <div class="about-bio">
+                <div class="social-icons">
+                  <span class="twitter">&nbsp;</span>
+                  <span class="github">&nbsp;</span>
+                </div>
+                <h4>Charles Emrich</h4>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+              </div>
             </div>
             <div class="card">
-
+              <div class="about-photo">
+                <!-- <img src="http://fillmurray.com/850/350" alt="" /> -->
+              </div>
+              <div class="about-bio">
+                <div class="social-icons">
+                  <span class="twitter">&nbsp;</span>
+                  <span class="github">&nbsp;</span>
+                </div>
+                <h4>Jared Eiseman</h4>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+              </div>
+            </div>
+            <div class="about">
+              <h2>About Our Application</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
             </div>
           </section>
         </div>
@@ -72,32 +117,5 @@
         <span class="github">&nbsp;</span>
       </div>
     </div>
-    <script>
-      var step = 32;
-      var divider = 1;
-      var centerW = $('.swirly').width() / 2;
-      var centerY = $('.swirly').height() / 2;
-      var timer = 3000;
-
-      $('.element').each(function(index) {
-        $(this).attr('id', 'circle_' + index);  
-        $(this).css({      
-            'height': step + (index * step) + "px",
-            'width':  step + (index * step) + "px",
-            'left': (centerW - (index * step / 2)) - 16 + "px",
-            'top': (centerY - (index * step / 2)) - 16 + "px",
-            'z-index': 999 - (index),
-            'animation': 'rotate (timer) 20000ms  infinite ease-in-out',
-            '-webkit-animation': 'rotate 20000ms infinite ease-in-out',
-            '-moz-animation': 'rotate 7000ms infinite ease-in-out',
-            'animation-direction': 'alternate',
-            '-webkit-animation-direction': 'alternate',
-            '-moz-animation-direction': 'alternate',
-            'animation-delay': (index) * 0.04 + "s",
-            '-webkit-animation-delay': (index) * 0.04 + "s",
-            '-moz-animation-delay': (index) * 0.04 + "s",
-        });
-      });
-    </script>
   </body>
 </html>

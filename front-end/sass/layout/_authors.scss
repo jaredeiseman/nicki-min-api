@@ -1,14 +1,99 @@
+.about-header {
+  @include grid-column(12);
+  margin-top: 60px;
+}
+.about {
+  @include grid-column(12);
+  margin-top: 40px;
+}
+
 #authors {
   @include grid-container;
 
   .card {
     @include grid-column(12);
-    min-height: 300px;
-    background: green;
-    margin-top: 40px;
+    margin: 20px 0;
+    padding: 10px 50px 10px 10px;
+    position: relative;
+    border: 2px solid $c-d-3;
+    background: lighten($c-l-3, 3%) -webkit-linear-gradient(right, $c-d-3 0px, $c-d-3 40px, transparent 31px);
 
-    @include desktop-bp {
+    &:nth-of-type(1) h4 {
+      bottom: 74px;
+      right: -68px;
+    }
+    &:nth-of-type(2) h4 {
+      bottom: 92px;
+      right: -87px;
+    }
+    &:nth-of-type(3) h4 {
+      bottom: 100px;
+      right: -97px;
+    }
+    &:nth-of-type(4) h4 {
+      bottom: 90px;
+      right: -85px;
+    }
+
+    @include tablet-bp {
       @include grid-column(6);
+    }
+
+    @media screen and (min-width: 1750px) {
+      @include grid-column(3);
+    }
+
+    .about-photo {
+      @include size(250px);
+      overflow: hidden;
+      background-image: url('http://fillmurray.com/1000/350');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: auto 100%;
+      margin: 0 auto;
+      width: 100%;
+
+      @include tablet-bp {
+        float: left;
+        margin-right: 20px;
+      }
+    }
+    .about-bio {
+      clear: left;
+      @include tablet-bp {
+        padding-left: 15px;
+      }
+
+
+      .social-icons {
+        position: absolute;
+        left: auto;
+        top: 10px;
+        right: 10px;
+        @include size(30px, 70px);
+
+        .twitter {
+          @include icon('../img/twit-white.png', 30px);
+
+        }
+
+        .github {
+          @include icon('../img/gh-white.png', 30px);
+        }
+      }
+
+      h4 {
+        position: absolute;
+        transform: rotate(-90deg);
+        font-size: 20px;
+        color: white;
+        letter-spacing: 3px;
+      }
+
+      p {
+        padding-top: 15px;
+        color: #000;
+      }
     }
   }
 }
