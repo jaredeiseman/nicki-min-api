@@ -133,8 +133,11 @@ p {
 #landing-hero {
   background-image: url("../img/landing-bg.jpg");
   background-size: auto 100%;
-  background-position: right;
+  background-position: 80% 0%;
   background-repeat: no-repeat; }
+  @media screen and (min-width: 992px) {
+    #landing-hero {
+      background-position: right; } }
   #landing-hero .mesh {
     position: fixed;
     height: calc(100vh - 80px);
