@@ -239,7 +239,7 @@ textarea {
   background-color: #ffe1e7;
   width: 100%;
   height: auto;
-  font-size: 20px;
+  font-size: 16px;
   padding: 20px;
   overflow: hidden;
   resize: none; }
@@ -379,7 +379,10 @@ nav ul {
 .doc {
   margin-top: 60px;
   padding-bottom: 40px;
-  border-bottom: 2px solid #ffe1e7; }
+  border-bottom: 2px solid #ffe1e7;
+  width: calc(100% - 40px);
+  float: left;
+  margin-left: 20px; }
 
 #serenade {
   text-align: center; }
