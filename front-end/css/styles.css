@@ -415,7 +415,8 @@ nav ul {
   width: calc(100% - 40px);
   float: left;
   margin-left: 20px;
-  margin: 20px 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
   padding: 10px 50px 10px 10px;
   position: relative;
   border: 2px solid #ff4871;
@@ -432,16 +433,29 @@ nav ul {
   #authors .card:nth-of-type(4) h4 {
     bottom: 90px;
     right: -85px; }
+  #authors .card:nth-of-type(1) .about-photo {
+    background-image: url("../img/jp4.jpg"); }
+  #authors .card:nth-of-type(2) .about-photo {
+    background-image: url("../img/jl5.jpg"); }
+  #authors .card:nth-of-type(3) .about-photo {
+    background-image: url("../img/ce2.jpg"); }
+  #authors .card:nth-of-type(4) .about-photo {
+    background-image: url("../img/je4.jpg"); }
   @media screen and (min-width: 768px) {
     #authors .card {
       width: calc(50% - 30px);
       float: left;
-      margin-left: 20px; } }
+      margin-left: 20px;
+      min-height: 600px; } }
+  @media screen and (min-width: 992px) {
+    #authors .card {
+      min-height: 471px; } }
   @media screen and (min-width: 1750px) {
     #authors .card {
       width: calc(25% - 25px);
       float: left;
-      margin-left: 20px; } }
+      margin-left: 20px;
+      min-height: 525px; } }
   #authors .card .about-photo {
     height: 250px;
     width: 250px;
@@ -458,9 +472,6 @@ nav ul {
         margin-right: 20px; } }
   #authors .card .about-bio {
     clear: left; }
-    @media screen and (min-width: 768px) {
-      #authors .card .about-bio {
-        padding-left: 15px; } }
     #authors .card .about-bio .social-icons {
       position: absolute;
       left: auto;

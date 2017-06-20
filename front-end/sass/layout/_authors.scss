@@ -12,7 +12,8 @@
 
   .card {
     @include grid-column(12);
-    margin: 20px 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
     padding: 10px 50px 10px 10px;
     position: relative;
     border: 2px solid $c-d-3;
@@ -34,13 +35,32 @@
       bottom: 90px;
       right: -85px;
     }
+    &:nth-of-type(1) .about-photo {
+      background-image: url('../img/jp4.jpg');
+    }
+    &:nth-of-type(2) .about-photo {
+      background-image: url('../img/jl5.jpg');
+    }
+    &:nth-of-type(3) .about-photo {
+      background-image: url('../img/ce2.jpg');
+    }
+    &:nth-of-type(4) .about-photo {
+      background-image: url('../img/je4.jpg');
+    }
+
 
     @include tablet-bp {
       @include grid-column(6);
+      min-height: 600px;
+    }
+
+    @include desktop-bp {
+      min-height: 471px;
     }
 
     @media screen and (min-width: 1750px) {
       @include grid-column(3);
+      min-height: 525px;
     }
 
     .about-photo {
@@ -61,7 +81,7 @@
     .about-bio {
       clear: left;
       @include tablet-bp {
-        padding-left: 15px;
+        // padding-left: 15px;
       }
 
 
