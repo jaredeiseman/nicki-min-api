@@ -13,3 +13,14 @@ h1, h2, h3, h4, h5, h6 {
 p {
   margin-bottom: 20px;
 }
+
+a {
+  color: $c-d-3;
+  font-weight: bolder;
+  text-decoration: none;
+  transition: color .3s;
+
+  &:hover {
+    color: $primary-color;
+  }
+}

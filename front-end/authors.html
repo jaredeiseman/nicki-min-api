@@ -103,10 +103,10 @@
             <div class="about">
               <h2>About Our Application</h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Nicki Min-API is a RESTful Application Program Interface for information regarding Nicki Minaj music. The inception of this idea was spawned from a project we discovered by the name of <a href="http://www.kanyerest.xyz/">Kanye REST</a>, and modified to be used for an <a href="https://www.epicodus.com/">Epicodus</a> Group Week Project as an exercise in developing the front-end of a site alongside the back end.
               </p>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                The technology stack we chose to use to implement this idea was using C#, with Nancy for routing, the Razor view engine, and MySQL for database management. For the front end, we are building upon the Razor view engine with Nancy routing, utilizing Sass to write our styles in SCSS format, with the aid of Bourbon and Neat libraries to streamline the design process.
               </p>
             </div>
           </section>
@@ -117,24 +117,25 @@
         <span class="github">&nbsp;</span>
       </div>
     </div>
-    <script>
-      // function fixHeight() {
-      //   var height = 0;
-      //   $('.card').each(function() {
-      //     if ($(this).height() > height) {
-      //       height = $(this).height();
-      //     }
-      //   });
-      //   $('.card').each(function() {
-      //     $(this).height(height);
-      //   });
-      // }
-      // fixHeight();
-      // $(window).on('resize', function() {
-      //   setTimeout(function() {
-      //     fixHeight();
-      //   }, 500);
-      // });
-    </script>
   </body>
 </html>
+<!-- $(document).ready(function() {
+  $('form').submit(function(e) {
+    e.preventDefault();
+    var query = $('form#input').val();
+    $.get('/api/songs/' + query).done(function(data, error) {
+      if (error) return;
+      $('somediv').append('<p>' + data[0].title + '</p>');
+
+    });
+
+  });
+});
+
+data = [
+  {
+    title: 'Starships',
+    album: 'Roman Reloaded',
+    lyrics: 'fdsakljfsadlkfjdsaf'
+  }
+]; -->

@@ -28,6 +28,14 @@ h1, h2, h3, h4, h5, h6 {
 p {
   margin-bottom: 20px; }
 
+a {
+  color: #ff4871;
+  font-weight: bolder;
+  text-decoration: none;
+  transition: color .3s; }
+  a:hover {
+    color: #ff94ac; }
+
 .landing-container, .docs-container {
   height: 100%;
   width: 100%; }
