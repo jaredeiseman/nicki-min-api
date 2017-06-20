@@ -17,12 +17,12 @@ namespace NickiMinAPI
         return View[parameters.page + ".cshtml"];
       };
       Get["/api/lyric-pile"] = _ => {
-        string alllyrics = "";
+        string allLyrics = "";
         foreach (Song song in Song.GetAll())
         {
-          alllyrics += song.Lyrics + " ";
+          allLyrics += song.Lyrics + " ";
         }
-        return alllyrics;
+        return allLyrics;
       };
       Get["/api/all"] = _ => {
         //TODO: Currently, it appears that we can't send this amount of JSON?
@@ -104,8 +104,7 @@ namespace NickiMinAPI
         return View["form.cshtml", allAlbums];
       };
       Get["/api/spit/verse"] = _ => {
-        Verse.Spit();
-        return "Doin' my best.";
+        return Verse.Spit();
       };
     }
   }
