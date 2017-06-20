@@ -446,16 +446,16 @@ nav ul {
       width: calc(50% - 30px);
       float: left;
       margin-left: 20px;
-      min-height: 600px; } }
+      min-height: 615px; } }
   @media screen and (min-width: 992px) {
     #authors .card {
-      min-height: 471px; } }
+      min-height: 525px; } }
   @media screen and (min-width: 1750px) {
     #authors .card {
       width: calc(25% - 25px);
       float: left;
       margin-left: 20px;
-      min-height: 525px; } }
+      min-height: 543px; } }
   #authors .card .about-photo {
     height: 250px;
     width: 250px;

@@ -51,16 +51,16 @@
 
     @include tablet-bp {
       @include grid-column(6);
-      min-height: 600px;
+      min-height: 615px;
     }
 
     @include desktop-bp {
-      min-height: 471px;
+      min-height: 525px;
     }
 
     @media screen and (min-width: 1750px) {
       @include grid-column(3);
-      min-height: 525px;
+      min-height: 543px;
     }
 
     .about-photo {
