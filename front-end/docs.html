@@ -22,6 +22,7 @@
           <ul class="desktop-nav">
             <li><a href="docs.html">Docs</a></li>
             <li><a href="serenade.html">Serenade</a></li>
+            <li><a href="lorem-minaj.html">Lorem Minaj</a></li>
             <li><a href="authors.html">About</a></li>
           </ul>
           <div class="burger">
@@ -32,6 +33,7 @@
           <ul class="mobile-nav">
             <li><a href="docs.html">Docs</a></li>
             <li><a href="serenade.html">Serenade</a></li>
+            <li><a href="lorem-minaj.html">Lorem Minaj</a></li>
             <li><a href="authors.html">About</a></li>
           </ul>
         </nav>
@@ -41,68 +43,67 @@
           <section class="doc" id="explanation">
             <h2>About our documentAtIoN</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              In our documentation, you will find descriptions of each endpoint that exists in the Nicki Min-API, as well as an example AJAX call for that endpoint. Following that, there is an example of the endpoint's output. <span style="color: #ff6184; font-weight: bolder;">Enjoy!</span>
             </p>
+
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              NOTE: In queries, replace spaces with dashes and lowercase all words. For example: the album "Pink Friday" would be "pink-friday."
             </p>
           </section>
           <section class="doc" id="songs-title">
             <h2>SEARCH FOR A SPECIFIC SONG</h2>
             <h3>/api/songs/:title</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              With this endpoint, you can query for a specific song by Nicki Minaj. The input is case insensitive, and will return a JSON formatted object with the following properties: title, lyrics, album.
             </p>
             <h4>Example jQuery AJAX call:</h4>
-            <textarea disabled>
-$.get('/api/songs/starships');
-            </textarea>
+            <textarea disabled>$.get("/api/songs/anaconda");</textarea>
             <h4>Example Output:</h4>
-            <textarea class="output" disabled>{&NewLine;&nbsp;&nbsp;key: value,&NewLine;&nbsp;&nbsp;...&NewLine;&nbsp;&nbsp;key: value&NewLine;}</textarea>
+            <textarea class="output" disabled>{&NewLine;&nbsp;&nbsp;"title": "Anaconda",&NewLine;&nbsp;&nbsp;"lyrics": "My anac...",&NewLine;&nbsp;&nbsp;"album": "The Pinkprint"&NewLine;}</textarea>
           </section>
           <section class="doc" id="albums-title">
-            <h2>SEARCH FOR A SPECIFIC SONG</h2>
-            <h3>/api/songs/:title</h3>
+            <h2>SEARCH FOR A SPECIFIC album</h2>
+            <h3>/api/albums/:title</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              With this endpoint, you can query a specific album by Nicki Minaj. The input is case insensitive, and will return a JSON formatted object with the following properties: title, releaseDate, tracks.
             </p>
             <h4>Example jQuery AJAX call:</h4>
-            <textarea disabled>$.get('/api/songs/starships');</textarea>
+            <textarea disabled>$.get("/api/albums/pink-friday");</textarea>
             <h4>Example Output:</h4>
-            <textarea class="output" disabled>{&NewLine;&nbsp;&nbsp;key: value,&NewLine;&nbsp;&nbsp;...&NewLine;&nbsp;&nbsp;key: value&NewLine;}</textarea>
+            <textarea class="output" disabled>{&NewLine;&nbsp;&nbsp;"title": "Pink Friday",&NewLine;&nbsp;&nbsp;"releaseDate": "2010",&NewLine;&nbsp;&nbsp;"tracks": ["I'm the Best", ... , "Roman's Revenge"]&NewLine;}</textarea>
           </section>
           <section class="doc" id="count">
-            <h2>SEARCH FOR A SPECIFIC SONG</h2>
-            <h3>/api/songs/:title</h3>
+            <h2>COUNT UNIQUE LYRICS IN ALL OF THE LYRICS IN THE DATABASE</h2>
+            <h3>/api/all/count</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              With this endpoint, you will receive an object with each unique word as a property. The object is formatted in JSON and the value to each property is an int with a count of the occurences of that word across her discography.
             </p>
             <h4>Example jQuery AJAX call:</h4>
-            <textarea disabled>$.get('/api/songs/starships');</textarea>
+            <textarea disabled>$.get("/api/all/count");</textarea>
             <h4>Example Output:</h4>
-            <textarea class="output" disabled>{&NewLine;&nbsp;&nbsp;key: value,&NewLine;&nbsp;&nbsp;...&NewLine;&nbsp;&nbsp;key: value&NewLine;}</textarea>
+            <textarea class="output" disabled>{&NewLine;&nbsp;&nbsp;"hot": 640,&NewLine;&nbsp;&nbsp;...&NewLine;&nbsp;&nbsp;"eiffel": 230&NewLine;}</textarea>
           </section>
           <section class="doc" id="spit-number">
-            <h2>SEARCH FOR A SPECIFIC SONG</h2>
-            <h3>/api/songs/:title</h3>
+            <h2>COUNT ALL UNIQUE WORDS IN A PARTICULAR SONG</h2>
+            <h3>/api/songs/count/:title</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              This endpoint will allow a particular song to be searched for, and return an object with key value pairs representing the unique word found in the song, and the amount of times each word appears in that song.
             </p>
             <h4>Example jQuery AJAX call:</h4>
-            <textarea disabled>$.get('/api/songs/starships');</textarea>
+            <textarea disabled>$.get("/api/songs/count/anaconda");</textarea>
             <h4>Example Output:</h4>
-            <textarea class="output" disabled>{&NewLine;&nbsp;&nbsp;key: value,&NewLine;&nbsp;&nbsp;...&NewLine;&nbsp;&nbsp;key: value&NewLine;}</textarea>
+            <textarea class="output" disabled>{&NewLine;&nbsp;&nbsp;"anaconda": 45,&NewLine;&nbsp;&nbsp;...&NewLine;&nbsp;&nbsp;"buns": 45&NewLine;}</textarea>
           </section>
           <section class="doc" id="spit-verse">
-            <h2>SEARCH FOR A SPECIFIC SONG</h2>
-            <h3>/api/songs/:title</h3>
+            <h2>COUNT ALL UNIQUE WORDS IN A PARTICULAR ALBUM</h2>
+            <h3>/api/albums/count/:title</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              This endpoint will allow a particular album to be searched for, and return an object with key value pairs representing the unique word found in each song of the album, and the amount of times the word appears.
             </p>
             <h4>Example jQuery AJAX call:</h4>
-            <textarea disabled>$.get('/api/songs/starships');</textarea>
+            <textarea disabled>$.get("/api/albums/count/anaconda");</textarea>
             <h4>Example Output:</h4>
-            <textarea class="output" disabled>{&NewLine;&nbsp;&nbsp;key: value,&NewLine;&nbsp;&nbsp;...&NewLine;&nbsp;&nbsp;key: value&NewLine;}</textarea>
+            <textarea class="output" disabled>{&NewLine;&nbsp;&nbsp;"anaconda": 45,&NewLine;&nbsp;&nbsp;...&NewLine;&nbsp;&nbsp;"buns": 45&NewLine;}</textarea>
           </section>
         </div>
       </section>

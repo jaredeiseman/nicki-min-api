@@ -15,6 +15,11 @@ html, body {
   width: 100vw;
   overflow-x: hidden; }
 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0; }
+
 body {
   font-family: Helvetica, Arial, sans-serif; }
 
@@ -257,80 +262,6 @@ textarea {
   textarea:not(.output) {
     height: 65px; }
 
-.swirly {
-  position: relative;
-  height: 352px;
-  width: 352px;
-  left: calc(50% - 176px);
-  margin-top: 40px; }
-  .swirly .element {
-    display: block;
-    height: 60px;
-    width: 60px;
-    background-position: center;
-    position: absolute;
-    border-radius: 100%;
-    -webkit-border-radius: 100%;
-    -moz-border-radius: 100%;
-    border-radius: 100%;
-    overflow: hidden; }
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-    background-color: #f2f2f2;
-    background-image: url("http://www.jaredeiseman.com/image1.JPG");
-    background-size: 350px 455px; }
-  33% {
-    transform: rotate(360deg);
-    background-color: #f2f2f2;
-    background-image: url("http://www.jaredeiseman.com/image2.JPG");
-    background-size: 350px 455px; }
-  66% {
-    transform: rotate(0deg);
-    background-color: #f2f2f2;
-    background-image: url("http://www.jaredeiseman.com/image3.JPG");
-    background-size: 350px 455px; }
-  100% {
-    transform: rotate(360deg);
-    background-color: #f2f2f2;
-    background-image: url("http://www.jaredeiseman.com/image4.JPG");
-    background-size: 350px 455px; } }
-@-webkit-keyframes rotate {
-  0% {
-    -webkit-transform: rotate(0deg);
-    background-color: #f2f2f2;
-    background-image: url("http://www.jaredeiseman.com/image1.JPG");
-    background-size: 350px 455px; }
-  33% {
-    -webkit-transform: rotate(360deg);
-    background-color: #f2f2f2;
-    background-image: url("http://www.jaredeiseman.com/image2.JPG");
-    background-size: 350px 455px; }
-  66% {
-    -webkit-transform: rotate(0deg);
-    background-color: #f2f2f2;
-    background-image: url("http://www.jaredeiseman.com/image3.JPG");
-    background-size: 350px 455px; }
-  100% {
-    -webkit-transform: rotate(360deg);
-    background-color: #f2f2f2;
-    background-image: url("http://www.jaredeiseman.com/image4.JPG");
-    background-size: 350px 455px; } }
-@-moz-keyframes rotate {
-  0% {
-    -moz-transform: rotate(0deg);
-    background-color: #8BC34A;
-    background-image: url("http://www.jaredeiseman.com/image2.JPG");
-    background-size: 350px 455px; }
-  15% {
-    -moz-transform: rotate(0deg); }
-  90% {
-    -moz-transform: rotate(360deg); }
-  100% {
-    -moz-transform: rotate(360deg);
-    background-color: #f2f2f2;
-    background-image: url("http://www.jaredeiseman.com/image3.JPG");
-    background-size: 350px 455px; } }
 header {
   height: 80px;
   width: 100%;
@@ -508,5 +439,47 @@ nav ul {
     #authors .card .about-bio p {
       padding-top: 15px;
       color: #000; }
+
+#lorem-minaj::after {
+  clear: both;
+  content: "";
+  display: block; }
+#lorem-minaj h2, #lorem-minaj #lorem-generator, #lorem-minaj #lorem-output {
+  width: calc(100% - 40px);
+  float: left;
+  margin-left: 20px;
+  margin-bottom: 30px; }
+#lorem-minaj #lorem-generator button[type="submit"] {
+  font-size: 20px;
+  padding: 10px;
+  width: 120px;
+  text-align: center;
+  margin-left: 15px;
+  background-color: #ff4871;
+  color: white;
+  border: 1px solid #ffaec0;
+  border-radius: 5px;
+  transition: color .3s, background-color .3s;
+  cursor: pointer; }
+  #lorem-minaj #lorem-generator button[type="submit"]:hover, #lorem-minaj #lorem-generator button[type="submit"]:active {
+    background-color: black;
+    color: #ff7b98; }
+#lorem-minaj #lorem-generator input[type="number"] {
+  font-size: 20px;
+  padding: 10px;
+  width: 60px;
+  text-align: center;
+  margin-left: 15px;
+  background-color: #ffe1e7;
+  border: 1px solid #ffaec0;
+  border-radius: 5px; }
+  #lorem-minaj #lorem-generator input[type="number"]:focus {
+    outline-color: #ff7b98; }
+#lorem-minaj #lorem-output {
+  min-height: 100px;
+  background-color: #ffe1e7;
+  border: 1px solid #ffaec0;
+  padding: 10px;
+  border-radius: 5px; }
 
 /*# sourceMappingURL=styles.css.map */
