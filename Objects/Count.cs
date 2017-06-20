@@ -13,7 +13,10 @@ namespace NickiMinAPI.Objects
       //TODO:Refactor this so that each. Add a Dictionary as an optional param which the function can optionally operate on. The will circumvent the problem of combining dictionaries in the album and discography count functions.
       Dictionary<string, int> counts = new Dictionary<string, int> {};
       string withoutBracketedText = Regex.Replace(lyrics, @"\[.*?\]", "");
-      string withoutPunctuation = Regex.Replace(withoutBracketedText, "[^a-zA-Z0-9' ]", "");
+      string linebreaksSpaced = withoutBracketedText.Replace(System.Environment.NewLine, " ");
+      //TODO: Remove exclamations, questions, and commas and \. Leave -.
+      //TODO: Figure out what's causing meditiationhigher on 867 of output. Cryinchristopher around 794.
+      string withoutPunctuation = Regex.Replace(linebreaksSpaced, @"[^a-zA-Z' \-]", "");
       string[] corpusSplit = withoutPunctuation.ToLower().Split(default(string[]), StringSplitOptions.RemoveEmptyEntries);
       foreach (string word in corpusSplit) {
         if (!counts.ContainsKey(word)) {
@@ -25,6 +28,7 @@ namespace NickiMinAPI.Objects
           counts[word] ++;
         }
       }
+      //TODO: Order Dictionary by value;
       return counts;
     }
     public static Dictionary<string, int> AnAlbum(Album album)
