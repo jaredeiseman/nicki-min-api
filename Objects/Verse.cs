@@ -11,23 +11,34 @@ namespace NickiMinAPI.Objects
   {
     public static string Spit()
     {
-      string lyrics = "";
+      MarkovChain<string> chain = new MarkovChain<string>(2);
+      List<string> allBars = new List<string> {};
+
       foreach (Song song in Song.GetAll())
       {
-        lyrics += song.Lyrics + " ";
+        string withoutBracketedText = Regex.Replace(song.Lyrics, @"\[.*?\]", "");
+        // string withoutPunctuation = Regex.Replace(linebreaksSpaced, @"[^a-zA-Z' \-]", " ");
+
+        string[] lyricSplit = withoutBracketedText.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+        foreach (string line in lyricSplit)
+        {
+          allBars.Add(line);
+          chain.Add(line.Split(new string[] {" ", "—"}, StringSplitOptions.RemoveEmptyEntries), 1);
+        }
       }
-      string withoutBracketedText = Regex.Replace(lyrics, @"\[.*?\]", "");
-      string linebreaksSpaced = withoutBracketedText.Replace(System.Environment.NewLine, " ");
-      // string withoutPunctuation = Regex.Replace(linebreaksSpaced, @"[^a-zA-Z' \-]", " ");
-      string[] corpusSplit = linebreaksSpaced.Split(new string[] {" ", "—"}, StringSplitOptions.RemoveEmptyEntries);
 
-      var chain = new MarkovChain<string>(2);
-
-      chain.Add(corpusSplit, 1);
-
-      var rand = new Random();
-      var sentence = string.Join(" ", chain.Chain(rand));
+      Random rand = new Random();
+      string sentence = string.Join(" ", chain.Chain(rand));
+      while (allBars.Contains(sentence))
+      {
+        sentence = string.Join(" ", chain.Chain(rand));
+        Console.WriteLine("Don't bite Nicki's style.");
+      }
       return sentence;
+    }
+    public static string Spit(int bars)
+    {
+      return "";
     }
   }
 }
