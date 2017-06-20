@@ -81,13 +81,13 @@ namespace NickiMinAPI
       };
       Post["/form/album"] = _ => {
         List<Album> allAlbums = Album.GetAll();
-        Album newAlbum = new Album(Request.Form["album-name"], Request.Form["album-date"]);
+        Album newAlbum = new Album(Request.Form["album-title"], Request.Form["album-date"]);
         newAlbum.Save();
         return View["form.cshtml", allAlbums];
       };
       Post["/form/song"] = _ => {
         List<Album> allAlbums = Album.GetAll();
-        Song newSong = new Song(Request.Form["song-name"], Request.Form["song-lyrics"], Request.Form["song-album"]);
+        Song newSong = new Song(Request.Form["song-title"], Request.Form["song-lyrics"], Request.Form["song-album"]);
         newSong.Save();
         return View["form.cshtml", allAlbums];
       };
