@@ -16,10 +16,18 @@ namespace NickiMinAPI
         Console.WriteLine("Triggered dynamic route: " + parameters.page);
         return View[parameters.page + ".cshtml"];
       };
+      Get["/api/lyric-pile"] = _ => {
+        string alllyrics = "";
+        foreach (Song song in Song.GetAll())
+        {
+          alllyrics += song.Lyrics + " ";
+        }
+        return alllyrics;
+      };
       Get["/api/all"] = _ => {
-        List<Album> allAlbums = Album.GetAll();
+        //TODO: Currently, it appears that we can't send this amount of JSON?
         List<object> allResponse = new List <object> {};
-        foreach (Album album in allAlbums)
+        foreach (Album album in Album.GetAll())
         {
           List<object> allTracks = new List<object> {};
           foreach (Song song in album.GetSongs())
@@ -33,7 +41,7 @@ namespace NickiMinAPI
           };
           allResponse.Add(albumResponse);
         }
-        return allResponse;
+        return allResponse[0];
       };
       Get["/api/songs/{title}"] = parameters => {
         string title = parameters.title;
