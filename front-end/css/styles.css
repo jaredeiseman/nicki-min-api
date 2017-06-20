@@ -262,6 +262,141 @@ textarea {
   textarea:not(.output) {
     height: 65px; }
 
+button[type="submit"] {
+  font-size: 20px;
+  padding: 10px;
+  width: 120px;
+  text-align: center;
+  margin-left: 15px;
+  background-color: #ff4871;
+  color: white;
+  border: 1px solid #ffaec0;
+  border-radius: 5px;
+  transition: color .3s, background-color .3s;
+  cursor: pointer; }
+  button[type="submit"]:hover, button[type="submit"]:active {
+    background-color: black;
+    color: #ff7b98; }
+
+input[type="number"], input[type="text"] {
+  font-size: 20px;
+  padding: 10px;
+  text-align: center;
+  margin-left: 15px;
+  background-color: #ffe1e7;
+  border: 1px solid #ffaec0;
+  border-radius: 5px; }
+  input[type="number"]:focus, input[type="text"]:focus {
+    outline-color: #ff7b98; }
+
+.modal label {
+  cursor: pointer;
+  margin-bottom: 0; }
+.modal label img {
+  border-radius: 150px;
+  display: block;
+  max-width: 300px; }
+.modal .modal-state {
+  display: none; }
+.modal .modal-trigger {
+  padding: 0.8em 1em; }
+.modal .modal-fade-screen {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  opacity: 0;
+  padding-top: 0.6em;
+  text-align: left;
+  transition: opacity 0.25s ease;
+  visibility: hidden;
+  z-index: 99999999999; }
+  @media screen and (min-width: 992px) {
+    .modal .modal-fade-screen {
+      padding-top: 10em; } }
+  .modal .modal-fade-screen .modal-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    cursor: pointer; }
+.modal .modal-close {
+  position: absolute;
+  top: 1.5em;
+  right: 1.5em;
+  height: 1.5em;
+  width: 1.5em;
+  background: #ffe1e7;
+  cursor: pointer; }
+  .modal .modal-close::after, .modal .modal-close::before {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    bottom: 0;
+    left: 50%;
+    height: 1.5em;
+    width: 0.15em;
+    background: #000;
+    content: "";
+    display: block;
+    margin: -3px 0 0 -1px;
+    transform: rotate(45deg); }
+  .modal .modal-close:hover::after, .modal .modal-close:hover::before {
+    background: black; }
+  .modal .modal-close::before {
+    transform: rotate(-45deg); }
+.modal .modal-inner {
+  background: #ffe1e7;
+  border-radius: 3px;
+  margin: auto;
+  margin-top: 0;
+  max-height: 95%;
+  overflow: auto;
+  padding: 1.5em;
+  position: relative;
+  transition: opacity 0.25s ease;
+  width: 95%; }
+  @media screen and (min-width: 768px) {
+    .modal .modal-inner {
+      max-height: 70%;
+      padding: 3em;
+      width: 60%; } }
+  @media screen and (min-width: 992px) {
+    .modal .modal-inner {
+      width: 50%; } }
+  .modal .modal-inner h1 {
+    color: #333;
+    text-align: left;
+    text-transform: capitalize; }
+  .modal .modal-inner p {
+    color: #333;
+    line-height: 1.5em; }
+  .modal .modal-inner .modal-intro {
+    margin-bottom: 1em; }
+  .modal .modal-inner .modal-content {
+    color: #333; }
+    @media screen and (min-width: 768px) {
+      .modal .modal-inner .modal-content {
+        columns: 2 8em; } }
+  .modal .modal-inner a.cta {
+    color: #ffe1e7;
+    display: inline-block;
+    margin-right: 0.5em;
+    margin-top: 1em; }
+    .modal .modal-inner a.cta:last-child {
+      padding: 0 2em; }
+.modal .modal-state:checked + .modal-fade-screen {
+  opacity: 1;
+  visibility: visible; }
+.modal .modal-state:checked + .modal-fade-screen .modal-inner {
+  top: 0.5em; }
+
+.modal-open {
+  overflow: hidden; }
+
 header {
   height: 80px;
   width: 100%;
@@ -449,32 +584,6 @@ nav ul {
   float: left;
   margin-left: 20px;
   margin-bottom: 30px; }
-#lorem-minaj #lorem-generator button[type="submit"] {
-  font-size: 20px;
-  padding: 10px;
-  width: 120px;
-  text-align: center;
-  margin-left: 15px;
-  background-color: #ff4871;
-  color: white;
-  border: 1px solid #ffaec0;
-  border-radius: 5px;
-  transition: color .3s, background-color .3s;
-  cursor: pointer; }
-  #lorem-minaj #lorem-generator button[type="submit"]:hover, #lorem-minaj #lorem-generator button[type="submit"]:active {
-    background-color: black;
-    color: #ff7b98; }
-#lorem-minaj #lorem-generator input[type="number"] {
-  font-size: 20px;
-  padding: 10px;
-  width: 60px;
-  text-align: center;
-  margin-left: 15px;
-  background-color: #ffe1e7;
-  border: 1px solid #ffaec0;
-  border-radius: 5px; }
-  #lorem-minaj #lorem-generator input[type="number"]:focus {
-    outline-color: #ff7b98; }
 #lorem-minaj #lorem-output {
   min-height: 100px;
   background-color: #ffe1e7;
