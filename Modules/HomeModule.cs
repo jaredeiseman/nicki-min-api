@@ -41,7 +41,11 @@ namespace NickiMinAPI
           };
           allResponse.Add(albumResponse);
         }
-        return allResponse[0];
+        object response = new {one = allResponse[0]};
+        Console.WriteLine(response);
+        // return allResponse;
+        return response;
+        // return new List<object> {new {foo = "bar"}, new {bar = "foo"}};
       };
       Get["/api/songs/{title}"] = parameters => {
         string title = parameters.title;
@@ -98,6 +102,10 @@ namespace NickiMinAPI
         Song newSong = new Song(Request.Form["song-title"], Request.Form["song-lyrics"], Request.Form["song-album"]);
         newSong.Save();
         return View["form.cshtml", allAlbums];
+      };
+      Get["/api/spit/verse"] = _ => {
+        Verse.Spit();
+        return "Doin' my best.";
       };
     }
   }
