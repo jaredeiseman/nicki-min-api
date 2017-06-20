@@ -1,3 +1,15 @@
 @{
   Layout="Shared/_Layout.cshtml";
 }
+
+<p id="output">
+  hello
+</p>
+
+<script>
+  $.get('/api/songs/anaconda').done(function(data) {
+    $('#output').text(data.lyrics);
+  }).fail(function() {
+    alert('error');
+  });
+</script>

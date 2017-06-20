@@ -24,29 +24,29 @@ namespace NickiMinAPI
         }
         return allLyrics;
       };
-      Get["/api/all"] = _ => {
-        //TODO: Currently, it appears that we can't send this amount of JSON?
-        List<object> allResponse = new List <object> {};
-        foreach (Album album in Album.GetAll())
-        {
-          List<object> allTracks = new List<object> {};
-          foreach (Song song in album.GetSongs())
-          {
-            object newSong = new { title = song.Title, lyrics = song.Lyrics};
-            allTracks.Add(newSong);
-          }
-          object albumResponse = new { title = album.Title,
-            releaseDate = album.ReleaseDate.ToString(),
-            tracks = allTracks
-          };
-          allResponse.Add(albumResponse);
-        }
-        object response = new {one = allResponse[0]};
-        Console.WriteLine(response);
-        // return allResponse;
-        return response;
-        // return new List<object> {new {foo = "bar"}, new {bar = "foo"}};
-      };
+      // Get["/api/all"] = _ => {
+      //   //TODO: Currently, it appears that we can't send this amount of JSON?
+      //   List<object> allResponse = new List <object> {};
+      //   foreach (Album album in Album.GetAll())
+      //   {
+      //     List<object> allTracks = new List<object> {};
+      //     foreach (Song song in album.GetSongs())
+      //     {
+      //       object newSong = new { title = song.Title, lyrics = song.Lyrics};
+      //       allTracks.Add(newSong);
+      //     }
+      //     object albumResponse = new { title = album.Title,
+      //       releaseDate = album.ReleaseDate.ToString(),
+      //       tracks = allTracks
+      //     };
+      //     allResponse.Add(albumResponse);
+      //   }
+      //   object response = new {one = allResponse[0]};
+      //   Console.WriteLine(response);
+      //   // return allResponse;
+      //   return response;
+      //   // return new List<object> {new {foo = "bar"}, new {bar = "foo"}};
+      // };
       Get["/api/songs/{title}"] = parameters => {
         string title = parameters.title;
         Song foundSong = Song.Find(title);
@@ -104,7 +104,13 @@ namespace NickiMinAPI
         return View["form.cshtml", allAlbums];
       };
       Get["/api/spit/verse"] = _ => {
-        return Verse.Spit();
+        MarkoVerse ourVerse = new MarkoVerse();
+        return ourVerse.SpitVerse();
+      };
+      Get["/api/spit/{bars}"] = parameters => {
+        int bars = parameters.bars;
+        MarkoVerse ourVerse = new MarkoVerse();
+        return ourVerse.Spit(bars);
       };
     }
   }

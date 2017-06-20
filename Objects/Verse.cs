@@ -7,9 +7,12 @@ using Markov;
 
 namespace NickiMinAPI.Objects
 {
-  public class Verse
+  public class MarkoVerse
   {
-    public static string Spit()
+    public MarkovChain<string> Corpus { get; set; }
+    public List<string> AllBars { get; set; }
+
+    public MarkoVerse()
     {
       MarkovChain<string> chain = new MarkovChain<string>(2);
       List<string> allBars = new List<string> {};
@@ -26,19 +29,48 @@ namespace NickiMinAPI.Objects
           chain.Add(line.Split(new string[] {" ", "—"}, StringSplitOptions.RemoveEmptyEntries), 1);
         }
       }
-
-      Random rand = new Random();
-      string sentence = string.Join(" ", chain.Chain(rand));
-      while (allBars.Contains(sentence))
+      AllBars = allBars;
+      Corpus = chain;
+    }
+    public string Spit(Random rand)
+    {
+      string sentence = string.Join(" ", this.Corpus.Chain(rand));
+      while (this.AllBars.Contains(sentence) || sentence.Length < 3)
       {
-        sentence = string.Join(" ", chain.Chain(rand));
-        Console.WriteLine("Don't bite Nicki's style.");
+        sentence = string.Join(" ", this.Corpus.Chain(rand));
+        // Console.WriteLine("Don't bite Nicki's style.");
       }
       return sentence;
     }
-    public static string Spit(int bars)
+
+    public string Spit(int bars)
     {
-      return "";
+      string bigSentence = "";
+      for (int i = 0; i < bars; i++)
+      {
+        Random rand = new Random();
+        bigSentence += this.Spit(rand) + ". ";
+      }
+      return bigSentence;
+    }
+
+    public List<string> SpitVerse()
+    {
+      Random rand = new Random();
+      string lineOne = this.Spit(rand);
+      string lineTwo = "";
+      bool AARhyme = false;
+      while (!AARhyme)
+      {
+        lineTwo = this.Spit(rand);
+        if (lineOne[lineOne.Length - 1] == lineTwo[lineTwo.Length - 1] && lineOne[lineOne.Length - 2] == lineTwo[lineTwo.Length - 2]) {
+          AARhyme = true;
+        }
+        // Console.WriteLine("Attempt: \n lineOne: {0} \n lineTwo: {1} \n Rhyme: {2}", lineOne, lineTwo, AARhyme);
+      }
+
+      // Console.WriteLine("Success: \n lineOne: {0} \n lineTwo: {1} \n Rhyme: {2}", lineOne, lineTwo, AARhyme);
+      return new List<string>{ lineOne, lineTwo };
     }
   }
 }
