@@ -734,12 +734,22 @@ nav ul.desktop-nav li {
     width: calc(50% - 30px);
     float: left;
     margin-left: 20px;
-    min-height: 615px;
+    min-height: 780px;
+  }
+}
+@media screen and (min-width: 800px) {
+  #authors .card {
+    min-height: 738px;
   }
 }
 @media screen and (min-width: 992px) {
   #authors .card {
-    min-height: 525px;
+    min-height: 612px;
+  }
+}
+@media screen and (min-width: 1300px) {
+  #authors .card {
+    min-height: 512px;
   }
 }
 @media screen and (min-width: 1750px) {
@@ -747,7 +757,7 @@ nav ul.desktop-nav li {
     width: calc(25% - 25px);
     float: left;
     margin-left: 20px;
-    min-height: 543px;
+    min-height: 654px;
   }
 }
 #authors .card .about-photo {
@@ -768,6 +778,8 @@ nav ul.desktop-nav li {
 }
 #authors .card .about-bio {
   clear: left;
+  padding: 15px;
+  font-size: 18px;
 }
 #authors .card .about-bio .social-icons {
   position: absolute;
