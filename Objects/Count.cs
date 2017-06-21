@@ -16,8 +16,8 @@ namespace NickiMinAPI.Objects
       string linebreaksSpaced = withoutBracketedText.Replace(System.Environment.NewLine, " ");
       //TODO: Remove exclamations, questions, and commas and \. Leave -.
       //TODO: Figure out what's causing meditiationhigher on 867 of output. Cryinchristopher around 794.
-      string withoutPunctuation = Regex.Replace(linebreaksSpaced, @"[^a-zA-Z' \-]", "");
-      string[] corpusSplit = withoutPunctuation.ToLower().Split(default(string[]), StringSplitOptions.RemoveEmptyEntries);
+      string withoutPunctuation = Regex.Replace(linebreaksSpaced, @"[^a-zA-Z' \-]", " ");
+      string[] corpusSplit = withoutPunctuation.ToLower().Split(new string[] {" ", "—"}, StringSplitOptions.RemoveEmptyEntries);
       foreach (string word in corpusSplit) {
         if (!counts.ContainsKey(word)) {
           counts.Add(word, 0);
