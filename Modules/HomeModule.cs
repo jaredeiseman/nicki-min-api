@@ -14,7 +14,7 @@ namespace NickiMinAPI
       };
       Get["/{page}"] = parameters => {
         Console.WriteLine("Triggered dynamic route: " + parameters.page);
-        return View[parameters.page + ".cshtml"];
+        return View[parameters.page + ".html"];
       };
       Get["/api/lyric-pile"] = _ => {
         string allLyrics = "";
@@ -105,7 +105,14 @@ namespace NickiMinAPI
       };
       Get["/api/spit/verse"] = _ => {
         MarkoVerse ourVerse = new MarkoVerse();
-        return ourVerse.SpitVerse();
+        Dictionary<string,string> ourSong = new Dictionary<string, string> {};
+        for (int i = 0; i < 8; i += 2)
+        {
+          List<string> newVerse = ourVerse.SpitVerse();
+          ourSong.Add("line" + (i + 1).ToString(), newVerse[0]);
+          ourSong.Add("line" + (i + 2).ToString(), newVerse[1]);
+        }
+        return ourSong;
       };
       Get["/api/spit/{bars}"] = parameters => {
         int bars = parameters.bars;

@@ -20,9 +20,15 @@ namespace NickiMinAPI.Objects
       foreach (Song song in Song.GetAll())
       {
         string withoutBracketedText = Regex.Replace(song.Lyrics, @"\[.*?\]", "");
-        // string withoutPunctuation = Regex.Replace(linebreaksSpaced, @"[^a-zA-Z' \-]", " ");
+        string withoutPunctuation = Regex.Replace(withoutBracketedText, @"[^a-zA-Z' \-.\r\n]", " ");
+        string nWordRemoved = Regex.Replace(withoutPunctuation, "(N|n)igg", "n*gg");
+        string sWordRemoved = Regex.Replace(nWordRemoved, "(S|s)hit", "sh*t");
+        string fWordRemoved = Regex.Replace(sWordRemoved, "(F|f)uck", "f*ck");
+        string pWordRemoved = Regex.Replace(fWordRemoved, "(P|p)uss", "p*ss");
+        string dWordRemoved = Regex.Replace(pWordRemoved, "(D|d)ick", "d*ck");
+        string bWordRemoved = Regex.Replace(dWordRemoved, "(B|b)itch", "b*tch");
 
-        string[] lyricSplit = withoutBracketedText.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+        string[] lyricSplit = bWordRemoved.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
         foreach (string line in lyricSplit)
         {
           allBars.Add(line);
@@ -39,7 +45,7 @@ namespace NickiMinAPI.Objects
       {
         sentence = string.Join(" ", this.Corpus.Chain(rand));
       }
-      return sentence;
+      return sentence + ".";
     }
 
     public string Spit(int bars)
@@ -58,16 +64,16 @@ namespace NickiMinAPI.Objects
       Random rand = new Random();
       string lineOne = this.Spit(rand);
       string lineTwo = "";
-      bool AARhyme = false;
-      while (!AARhyme)
+      bool Rhyme = false;
+      while (!Rhyme)
       {
         lineTwo = this.Spit(rand);
-        if (lineOne[lineOne.Length - 1] == lineTwo[lineTwo.Length - 1]
+        if (lineOne[lineOne.Length - 3] == lineTwo[lineTwo.Length - 3]
          && lineOne[lineOne.Length - 2] == lineTwo[lineTwo.Length - 2]
          && lineOne != lineTwo
          && lineOne.Length > lineTwo.Length - 20
          && lineOne.Length < lineTwo.Length + 20) {
-          AARhyme = true;
+          Rhyme = true;
         }
         // Console.WriteLine("Attempt: \n lineOne: {0} \n lineTwo: {1} \n Rhyme: {2}", lineOne, lineTwo, AARhyme);
       }
@@ -80,5 +86,5 @@ namespace NickiMinAPI.Objects
 
 //TODO: Make verse compose 8 lines.
 //TODO: Enforce similar line length.
-//TODO: Bleep n*gg, p*ssy, f*ck
-// TODO: Remove parens and maybe q marks
+//TODO: Bleep n*gg, p*ssy, f*ck, b*tch
+//TODO: Remove parens and maybe q marks
