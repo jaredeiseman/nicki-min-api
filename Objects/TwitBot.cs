@@ -13,7 +13,7 @@ namespace NickiMinAPI.Objects
     public static void StartTimer()
     {
       timer = new Timer();
-      timer.Interval = 60000;
+      timer.Interval = 6000000;
 
       timer.Elapsed += OnTimedEvent;
       timer.AutoReset = true;
