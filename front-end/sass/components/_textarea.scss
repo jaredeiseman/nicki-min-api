@@ -2,12 +2,45 @@ textarea {
   background-color: $c-l-3;
   width: 100%;
   height: auto;
-  font-size: 20px;
+  font-size: 16px;
   padding: 20px;
   overflow: hidden;
   resize: none;
 
   &:not(.output) {
     height: 65px;
+  }
+}
+
+button[type="submit"] {
+  font-size: 20px;
+  padding: 10px;
+  width: 120px;
+  text-align: center;
+  margin-left: 15px;
+  background-color: $c-d-3;
+  color: white;
+  border: 1px solid $c-l-1;
+  border-radius: 5px;
+  transition: color .3s, background-color .3s;
+  cursor: pointer;
+
+  &:hover, &:active {
+    background-color: black;
+    color: $c-d-1;
+  }
+}
+input[type="number"], input[type="text"] {
+  font-size: 20px;
+  padding: 10px;
+  // width: 60px;
+  text-align: center;
+  margin-left: 15px;
+  background-color: $c-l-3;
+  border: 1px solid $c-l-1;
+  border-radius: 5px;
+
+  &:focus {
+    outline-color: $c-d-1;
   }
 }
