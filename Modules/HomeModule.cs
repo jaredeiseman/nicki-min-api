@@ -11,14 +11,14 @@ namespace NickiMinAPI
     {
       Get["/tweet-timer"] = _ => {
         TwitBot.StartTimer();
-        return "Tweet Timer Started.";
+        return View["index.cshtml"];
       };
-      Get["/"] = parameters => {
+      Get["/"] = _ => {
         return View["index.cshtml"];
       };
       Get["/{page}"] = parameters => {
         Console.WriteLine("Triggered dynamic route: " + parameters.page);
-        return View[parameters.page + ".html"];
+        return View[parameters.page + ".cshtml"];
       };
       Get["/api/lyric-pile"] = _ => {
         string allLyrics = "";

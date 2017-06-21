@@ -44,7 +44,7 @@
       <h4>Try it out:</h4>
       <form class="try-it" id="api-albums-title">
         <label for="album">Enter an album title:</label>
-        <input type="text" name="album" value="roman-reloaded">
+        <input type="text" name="album" value="pink-friday">
         <button type="submit" name="button">Submit</button>
       </form>
     </section>
@@ -94,7 +94,7 @@
       <h4>Try it out:</h4>
       <form class="try-it" id="api-albums-count-title">
         <label for="album">Enter an album title:</label>
-        <input type="text" name="album" value="roman-reloaded">
+        <input type="text" name="album" value="pink-friday">
         <button type="submit" name="button">Submit</button>
       </form>
     </section>
@@ -102,7 +102,7 @@
       <h2>Produce original bars</h2>
       <h3>/api/spit/:bars</h3>
       <p>
-        Welcome to the reason this project exists. At this endpoint you can supply a number as it's "bars" argument. The returned result will be a string that is "original" bars generated based on the corpus of all of Nicki Minaj's music within the database. It generates the content via Markov Chain, and proves to be a lot of fun. Check out our <a href="spit-verse.html">Spit Verse</a> section to see entire "original" verses.
+        Welcome to the reason this project exists. At this endpoint you can supply a number as it's "bars" argument. The returned result will be a string that is "original" bars generated based on the corpus of all of Nicki Minaj's music within the database. It generates the content via Markov Chain, and proves to be a lot of fun. Check out our <a href="spit-verse">Spit Verse</a> section to see entire "original" verses.
       </p>
       <h4>Example jQuery AJAX call:</h4>
       <textarea disabled>$.get("/api/spit/2");</textarea>
@@ -110,7 +110,7 @@
       <textarea class="output" disabled>[&NewLine;&nbsp;&nbsp;"No no no no.",&NewLine;&nbsp;&nbsp;"Looking like a grand piano."&NewLine;]</textarea>
       <h4>Try it out:</h4>
       <p>
-        Head on over to <a href="lorem-minaj.html">Lorem Minaj</a> to see this endpoint in action.
+        Head on over to <a href="lorem-minaj">Lorem Minaj</a> to see this endpoint in action.
       </p>
     </section>
     <section class="doc">
@@ -125,7 +125,7 @@
       <textarea class="output" disabled>[&NewLine;&nbsp;&nbsp;"No no no no.",&NewLine;&nbsp;&nbsp;"Looking like a grand piano.",&NewLine;&nbsp;&nbsp;"Haters you can't handle my worst.",&NewLine;&nbsp;&nbsp;"Let's go to SunTrust.",&NewLine;&nbsp;&nbsp;"You're a cheat and a fan too.",&NewLine;&nbsp;&nbsp;"Put you in a freakin' zoo.",&NewLine;&nbsp;&nbsp;"I said Yes daddy I do.",&NewLine;&nbsp;&nbsp;"This what you gon' do."&NewLine;]</textarea>
       <h4>Try it out:</h4>
       <p>
-        Head on over to <a href="spit-verse.html">Spit Verse</a> to see this endpoint in action.
+        Head on over to <a href="spit-verse">Spit Verse</a> to see this endpoint in action.
       </p>
     </section>
   </div>
@@ -153,10 +153,11 @@
       $('#modal-1').prop('checked', true);
 
       var title = $(this).find('input[type="text"]').val();
+      $('#modal-output').empty();
 
       $.get('/api/songs/' + title)
       .done(function(data) {
-        $('#modal-output').text(data);
+        $('#modal-output').append('<p>' + data.title + '</p><p>' + data.lyrics + '</p><p>' + data.album + '</p>');
       })
       .fail(function() {
         $('#modal-output').text('There was an error.');
@@ -168,10 +169,15 @@
       $('#modal-1').prop('checked', true);
 
       var title = $(this).find('input[type="text"]').val();
+      $('#modal-output').empty();
 
       $.get('/api/albums/' + title)
       .done(function(data) {
-        $('#modal-output').text(data);
+        $('#modal-output').append('<p>' + data.title + '</p><p>' + data.releaseDate + '</p>');
+        for (var i = 0; i < data.tracks.length; i++) {
+          $('#modal-output').append('<p>' + data.tracks[i].title + '</p>');
+          $('#modal-output').append('<p>' + data.tracks[i].lyrics + '</p>');
+        }
       })
       .fail(function() {
         $('#modal-output').text('There was an error.');
@@ -181,10 +187,13 @@
     $('#api-all-count').submit(function(e) {
       e.preventDefault();
       $('#modal-1').prop('checked', true);
+      $('#modal-output').empty();
 
       $.get('/api/all/count/')
       .done(function(data) {
-        $('#modal-output').text(data);
+        for (var key in data) {
+          $('#modal-output').append('<p>' + key + ': ' + data[key] + '</p>');
+        }
       })
       .fail(function() {
         $('#modal-output').text('There was an error.');
@@ -194,12 +203,15 @@
     $('#api-songs-count-title').submit(function(e) {
       e.preventDefault();
       $('#modal-1').prop('checked', true);
+      $('#modal-output').empty();
 
       var title = $(this).find('input[type="text"]').val();
 
       $.get('/api/songs/count/' + title)
       .done(function(data) {
-        $('#modal-output').text(data);
+        for (var key in data) {
+          $('#modal-output').append('<p>' + key + ': ' + data[key] + '</p>');
+        }
       })
       .fail(function() {
         $('#modal-output').text('There was an error.');
@@ -209,12 +221,15 @@
     $('#api-albums-count-title').submit(function(e) {
       e.preventDefault();
       $('#modal-1').prop('checked', true);
+      $('#modal-output').empty();
 
       var title = $(this).find('input[type="text"]').val();
 
       $.get('/api/albums/count/' + title)
       .done(function(data) {
-        $('#modal-output').text(data);
+        for (var key in data) {
+          $('#modal-output').append('<p>' + key + ': ' + data[key] + '</p>');
+        }
       })
       .fail(function() {
         $('#modal-output').text('There was an error.');

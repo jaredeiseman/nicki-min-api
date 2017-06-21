@@ -61,7 +61,8 @@ namespace NickiMinAPI.Objects
         string goneDone = Regex.Replace(youYall, "(G|g)one", "done gone");
         string ingIn = Regex.Replace(goneDone, "ing", "in'");
         string fixIm = Regex.Replace(ingIn, "(I|i) m", "I'm");
-        string noMun = Regex.Replace(fixIm, "(M|m)un", "YEEHAW");
+        string fixCant = Regex.Replace(fixIm, "n t ", "n't ");
+        string noMun = Regex.Replace(fixCant, "(M|m)un", "YEEHAW");
 
         string[] lyricSplit = noMun.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
         foreach (string line in lyricSplit)
@@ -86,9 +87,9 @@ namespace NickiMinAPI.Objects
     public string Spit(int bars)
     {
       string bigSentence = "";
+      Random rand = new Random();
       for (int i = 0; i < bars; i++)
       {
-        Random rand = new Random();
         bigSentence += this.Spit(rand) + ". ";
       }
       return bigSentence;
