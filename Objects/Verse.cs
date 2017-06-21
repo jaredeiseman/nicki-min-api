@@ -38,7 +38,6 @@ namespace NickiMinAPI.Objects
       while (this.AllBars.Contains(sentence) || sentence.Length < 3)
       {
         sentence = string.Join(" ", this.Corpus.Chain(rand));
-        // Console.WriteLine("Don't bite Nicki's style.");
       }
       return sentence;
     }
@@ -63,7 +62,11 @@ namespace NickiMinAPI.Objects
       while (!AARhyme)
       {
         lineTwo = this.Spit(rand);
-        if (lineOne[lineOne.Length - 1] == lineTwo[lineTwo.Length - 1] && lineOne[lineOne.Length - 2] == lineTwo[lineTwo.Length - 2]) {
+        if (lineOne[lineOne.Length - 1] == lineTwo[lineTwo.Length - 1]
+         && lineOne[lineOne.Length - 2] == lineTwo[lineTwo.Length - 2]
+         && lineOne != lineTwo
+         && lineOne.Length > lineTwo.Length - 20
+         && lineOne.Length < lineTwo.Length + 20) {
           AARhyme = true;
         }
         // Console.WriteLine("Attempt: \n lineOne: {0} \n lineTwo: {1} \n Rhyme: {2}", lineOne, lineTwo, AARhyme);
@@ -74,3 +77,8 @@ namespace NickiMinAPI.Objects
     }
   }
 }
+
+//TODO: Make verse compose 8 lines.
+//TODO: Enforce similar line length.
+//TODO: Bleep n*gg, p*ssy, f*ck
+// TODO: Remove parens and maybe q marks
