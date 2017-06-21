@@ -1,0 +1,25 @@
+@{
+  Layout="Shared/_Layout.cshtml";
+}
+
+<section id="main-layout" class="countryfried">
+  <div class="content">
+    <section id="serenade">
+      <h2>"Original" (Country fried) Nicki Minaj Verse*</h2>
+      <h6>*: By original we mean, a computer made this</h6>
+      <div id="output"></div>
+      <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"><img src="img/cowboy-unicorn.jpg" alt="Le Angry Unicorno" style="width: 40%"/></a>
+    </section>
+  </div>
+</section>
+<script>
+  $.get('/api/spit/country/')
+  .done(function(data) {
+    for (var i = 0; i < data.length; i++) {
+      $('#output').append('<p>' + data[i] + '</p>')
+    }
+  })
+  .fail(function() {
+    $('#output').html('<p>There was an error.</p>');
+  });
+</script>

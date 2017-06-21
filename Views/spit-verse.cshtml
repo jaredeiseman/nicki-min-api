@@ -1,0 +1,25 @@
+@{
+  Layout="Shared/_Layout.cshtml";
+}
+
+<section id="main-layout">
+  <div class="content">
+    <section id="serenade">
+      <h2>"Original" Nicki Minaj Verse*</h2>
+      <h6>*: By original we mean, a computer made this</h6>
+      <div id="output"></div>
+      <a href="spit-country.html"><img src="img/angry_unicorn.png" alt="Le Angry Unicorno" /></a>
+    </section>
+  </div>
+</section>
+<script>
+  $.get('/api/spit/verse/')
+    .done(function(data) {
+      for (var i = 0; i < data.length; i++) {
+        $('#output').append('<p>' + data[i] + '</p>')
+      }
+    })
+    .fail(function() {
+      $('#output').html('<p>There was an error.</p>');
+    });
+</script>

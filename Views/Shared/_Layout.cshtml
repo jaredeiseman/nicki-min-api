@@ -1,18 +1,51 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>NickiMinAPI</title>
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
-    <link rel="stylesheet" href="/Content/css/styles.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nicki Min-API</title>
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:700" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css" type="text/css" />
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/scripts.js"></script>
   </head>
   <body>
-    <div class="container">
-      <div class="jumbotron">
-        NickiMinAPI
+    <header>
+      <div class="logo">
+        <a href="index.html">
+          <span>N</span>
+          <span>M</span>
+          <span>A</span>
+        </a>
       </div>
+      <nav>
+        <ul class="desktop-nav">
+          <li><a href="docs.html">Docs</a></li>
+          <li><a href="spit-verse.html">Spit Verse</a></li>
+          <li><a href="lorem-minaj.html">Lorem Minaj</a></li>
+          <li><a href="authors.html">About</a></li>
+        </ul>
+        <div class="burger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul class="mobile-nav">
+          <li><a href="docs.html">Docs</a></li>
+          <li><a href="spit-verse.html">Spit Verse</a></li>
+          <li><a href="lorem-minaj.html">Lorem Minaj</a></li>
+          <li><a href="authors.html">About</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="main-container">
+
       @RenderBody()
+
+    </div>
+    <div class="social-icons">
+      <h5>Follow Us On</h5>
+      <a href="https://twitter.com/nickiminapi"><span class="twitter">&nbsp;</span></a>
+      <a href="https://github.com/jaredeiseman/nicki-min-api"><span class="github">&nbsp;</span></a>
     </div>
   </body>
 </html>

@@ -2,14 +2,11 @@
   Layout="Shared/_Layout.cshtml";
 }
 
-<p id="output">
-  hello
-</p>
-
-<script>
-  $.get('/api/songs/anaconda').done(function(data) {
-    $('#output').text(data.lyrics);
-  }).fail(function() {
-    alert('error');
-  });
-</script>
+<section id="landing-hero">
+  <div class="mesh"></div>
+  <div class="title">
+    <h1>Nicki Min-API</h1>
+    <p>
+      A RESTful API for Nicki Minaj music
+  </div>
+</section>

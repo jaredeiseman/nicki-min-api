@@ -52,16 +52,16 @@ a:hover {
   color: #ff94ac;
 }
 
-.landing-container, .docs-container {
-  height: 100%;
+.main-container {
   width: 100%;
+  height: calc(100% - 80px);
 }
 
 #main-layout {
   background-color: #ffe1e7;
   display: flex;
   flex-direction: column;
-  min-height: calc(100% - 80px);
+  min-height: 100%;
 }
 #main-layout::after {
   clear: both;
@@ -599,7 +599,7 @@ nav ul.desktop-nav li {
 #landing-hero {
   position: relative;
   width: 100%;
-  height: calc(100% - 80px);
+  height: 100%;
 }
 #landing-hero .title {
   position: absolute;
