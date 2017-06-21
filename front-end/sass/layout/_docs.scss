@@ -2,4 +2,5 @@
   margin-top: 60px;
   padding-bottom: 40px;
   border-bottom: 2px solid $c-l-3;
+  @include grid-column(12);
 }

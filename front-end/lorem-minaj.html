@@ -36,18 +36,36 @@
           </ul>
         </nav>
       </header>
-      <section id="landing-hero">
-        <div class="mesh"></div>
-        <div class="title">
-          <h1>Nicki Min-API</h1>
-          <p>
-            A RESTful API for Nicki Minaj music
+      <section id="main-layout">
+        <div class="content" id="lorem-minaj">
+          <h2>Lorem Minaj Generator</h2>
+          <form id="lorem-generator">
+            <label for="quanity">How many sentences would you like to generate?</label>
+            <input type="number" name="quantity" value="4">
+            <button type="submit" name="button">Minaj Me</button>
+          </form>
+          <p id="lorem-output">
+            Output
+          </p>
         </div>
       </section>
-      <div class="social-icons">
-        <span class="twitter">&nbsp;</span>
-        <span class="github">&nbsp;</span>
-      </div>
     </div>
+    <script>
+      $('#lorem-generator').submit(function(e) {
+        e.preventDefault();
+        var quantity = $('input[name="quantity"]').val();
+        if (parseInt(quantity) > 8 || parseInt(quantity) <= 0) {
+          $('#lorem-output').text('Please input a positive number of sentences less than or equal to 8.');
+        } else {
+          $.get('/api/spit/verse/' + quantity)
+            .done(function(data) {
+              $('#lorem-output').text(data);
+            })
+            .fail(function() {
+              $('#lorem-output').text('There was an error.');
+            });
+        }
+      });
+    </script>
   </body>
 </html>
