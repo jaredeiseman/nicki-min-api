@@ -9,12 +9,16 @@ namespace NickiMinAPI
   {
     public HomeModule()
     {
+      Get["/tweet-timer"] = _ => {
+        TwitBot.StartTimer();
+        return "Tweet Timer Started.";
+      };
       Get["/"] = parameters => {
         return View["index.cshtml"];
       };
       Get["/{page}"] = parameters => {
         Console.WriteLine("Triggered dynamic route: " + parameters.page);
-        return View[parameters.page + ".cshtml"];
+        return View[parameters.page + ".html"];
       };
       Get["/api/lyric-pile"] = _ => {
         string allLyrics = "";
@@ -105,6 +109,10 @@ namespace NickiMinAPI
       };
       Get["/api/spit/verse"] = _ => {
         MarkoVerse ourVerse = new MarkoVerse();
+        return ourVerse.SpitVerse();
+      };
+      Get["/api/spit/country"] = _ => {
+        MarkoVerse ourVerse = new MarkoVerse(true);
         return ourVerse.SpitVerse();
       };
       Get["/api/spit/{bars}"] = parameters => {
