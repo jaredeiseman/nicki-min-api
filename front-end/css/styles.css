@@ -600,6 +600,9 @@ nav ul.desktop-nav li {
   float: left;
   margin-left: 20px;
 }
+.doc:last-child {
+  border-bottom: none;
+}
 
 #serenade {
   text-align: center;
@@ -695,7 +698,6 @@ nav ul.desktop-nav li {
   height: 250px;
   width: 250px;
   overflow: hidden;
-  background-image: url("http://fillmurray.com/1000/350");
   background-position: center;
   background-repeat: no-repeat;
   background-size: auto 100%;
@@ -725,6 +727,10 @@ nav ul.desktop-nav li {
   background-size: 30px 30px;
   background-position: center;
   display: inline-block;
+  transition: background-image .3s;
+}
+#authors .card .about-bio .social-icons .twitter:hover {
+  background-image: url("../img/twit-pink.png");
 }
 #authors .card .about-bio .social-icons .github {
   background-image: url("../img/gh-white.png");
@@ -732,6 +738,10 @@ nav ul.desktop-nav li {
   background-size: 30px 30px;
   background-position: center;
   display: inline-block;
+  transition: background-image .3s;
+}
+#authors .card .about-bio .social-icons .github:hover {
+  background-image: url("../img/github-pink.png");
 }
 #authors .card .about-bio h4 {
   position: absolute;
