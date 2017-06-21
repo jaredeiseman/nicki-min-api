@@ -51,22 +51,29 @@
 
     @include tablet-bp {
       @include grid-column(6);
-      min-height: 615px;
+      min-height: 780px;
+    }
+
+    @media screen and (min-width: 800px) {
+      min-height: 738px;
     }
 
     @include desktop-bp {
-      min-height: 525px;
+      min-height: 612px;
+    }
+
+    @media screen and (min-width: 1300px) {
+      min-height: 512px;
     }
 
     @media screen and (min-width: 1750px) {
       @include grid-column(3);
-      min-height: 543px;
+      min-height: 654px;
     }
 
     .about-photo {
       @include size(250px);
       overflow: hidden;
-      background-image: url('http://fillmurray.com/1000/350');
       background-position: center;
       background-repeat: no-repeat;
       background-size: auto 100%;
@@ -78,12 +85,11 @@
         margin-right: 20px;
       }
     }
+
     .about-bio {
       clear: left;
-      @include tablet-bp {
-        // padding-left: 15px;
-      }
-
+      padding: 15px;
+      font-size: 18px;
 
       .social-icons {
         position: absolute;
@@ -94,11 +100,20 @@
 
         .twitter {
           @include icon('../img/twit-white.png', 30px);
+          transition: background-image .3s;
 
+          &:hover {
+            background-image: url('../img/twit-pink.png');
+          }
         }
 
         .github {
           @include icon('../img/gh-white.png', 30px);
+          transition: background-image .3s;
+
+          &:hover {
+            background-image: url('../img/github-pink.png');
+          }
         }
       }
 

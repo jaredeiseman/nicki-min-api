@@ -52,16 +52,16 @@ a:hover {
   color: #ff94ac;
 }
 
-.landing-container, .docs-container {
-  height: 100%;
+.main-container {
   width: 100%;
+  height: calc(100% - 80px);
 }
 
 #main-layout {
   background-color: #ffe1e7;
   display: flex;
   flex-direction: column;
-  min-height: calc(100% - 80px);
+  min-height: 100%;
 }
 #main-layout::after {
   clear: both;
@@ -272,6 +272,21 @@ nav .mobile-nav a:hover {
 
 .social-icons {
   z-index: 20 !important;
+  position: relative;
+}
+.social-icons h5 {
+  color: #ff4871;
+  transform: rotate(90deg);
+  white-space: nowrap;
+  position: absolute;
+  top: -120px;
+  left: -65px;
+  font-size: 20px;
+}
+@media screen and (min-width: 768px) {
+  .social-icons h5 {
+    display: none;
+  }
 }
 .social-icons .twitter, .social-icons .github {
   height: 40px;
@@ -517,6 +532,47 @@ input[type="number"]:focus, input[type="text"]:focus {
   overflow: hidden;
 }
 
+.follow-twitter {
+  font-family: Nevis-Bold, Arial, sans-serif;
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  padding: 28px 55px 28px 20px;
+  transition: color .3s, text-shadow .3s, background .3s;
+  background-color: #ff7b98;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .follow-twitter {
+    display: block;
+  }
+}
+.follow-twitter:hover {
+  color: #ff7b98;
+  background: black;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+.follow-twitter:hover:after {
+  background-image: url("../img/twit-pink.png");
+}
+.follow-twitter:after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-57%);
+  background-image: url("../img/twit-white.png");
+  background-size: 28px 28px;
+  background-repeat: no-repeat;
+  height: 28px;
+  width: 28px;
+  transition: background-image .3s;
+}
+
 header {
   height: 80px;
   width: 100%;
@@ -543,7 +599,7 @@ nav ul.desktop-nav li {
 #landing-hero {
   position: relative;
   width: 100%;
-  height: calc(100% - 80px);
+  height: 100%;
 }
 #landing-hero .title {
   position: absolute;
@@ -599,6 +655,9 @@ nav ul.desktop-nav li {
   width: calc(100% - 40px);
   float: left;
   margin-left: 20px;
+}
+.doc:last-child {
+  border-bottom: none;
 }
 
 #serenade {
@@ -675,12 +734,22 @@ nav ul.desktop-nav li {
     width: calc(50% - 30px);
     float: left;
     margin-left: 20px;
-    min-height: 615px;
+    min-height: 780px;
+  }
+}
+@media screen and (min-width: 800px) {
+  #authors .card {
+    min-height: 738px;
   }
 }
 @media screen and (min-width: 992px) {
   #authors .card {
-    min-height: 525px;
+    min-height: 612px;
+  }
+}
+@media screen and (min-width: 1300px) {
+  #authors .card {
+    min-height: 512px;
   }
 }
 @media screen and (min-width: 1750px) {
@@ -688,14 +757,13 @@ nav ul.desktop-nav li {
     width: calc(25% - 25px);
     float: left;
     margin-left: 20px;
-    min-height: 543px;
+    min-height: 654px;
   }
 }
 #authors .card .about-photo {
   height: 250px;
   width: 250px;
   overflow: hidden;
-  background-image: url("http://fillmurray.com/1000/350");
   background-position: center;
   background-repeat: no-repeat;
   background-size: auto 100%;
@@ -710,6 +778,8 @@ nav ul.desktop-nav li {
 }
 #authors .card .about-bio {
   clear: left;
+  padding: 15px;
+  font-size: 18px;
 }
 #authors .card .about-bio .social-icons {
   position: absolute;
@@ -725,6 +795,10 @@ nav ul.desktop-nav li {
   background-size: 30px 30px;
   background-position: center;
   display: inline-block;
+  transition: background-image .3s;
+}
+#authors .card .about-bio .social-icons .twitter:hover {
+  background-image: url("../img/twit-pink.png");
 }
 #authors .card .about-bio .social-icons .github {
   background-image: url("../img/gh-white.png");
@@ -732,6 +806,10 @@ nav ul.desktop-nav li {
   background-size: 30px 30px;
   background-position: center;
   display: inline-block;
+  transition: background-image .3s;
+}
+#authors .card .about-bio .social-icons .github:hover {
+  background-image: url("../img/github-pink.png");
 }
 #authors .card .about-bio h4 {
   position: absolute;
