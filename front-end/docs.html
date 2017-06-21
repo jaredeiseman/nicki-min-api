@@ -21,7 +21,7 @@
         <nav>
           <ul class="desktop-nav">
             <li><a href="docs.html">Docs</a></li>
-            <li><a href="serenade.html">Serenade</a></li>
+            <li><a href="spit-verse.html">Spit Verse</a></li>
             <li><a href="lorem-minaj.html">Lorem Minaj</a></li>
             <li><a href="authors.html">About</a></li>
           </ul>
@@ -32,7 +32,7 @@
           </div>
           <ul class="mobile-nav">
             <li><a href="docs.html">Docs</a></li>
-            <li><a href="serenade.html">Serenade</a></li>
+            <li><a href="spit-verse.html">Spit Verse</a></li>
             <li><a href="lorem-minaj.html">Lorem Minaj</a></li>
             <li><a href="authors.html">About</a></li>
           </ul>
@@ -138,15 +138,30 @@
             <h2>Produce original bars</h2>
             <h3>/api/spit/:bars</h3>
             <p>
-              Welcome to the reason this project exists. At this endpoint you can supply a number as it's "bars" argument. The returned result will be a string that is "original" bars generated based on the corpus of all of Nicki Minaj's music within the database. It generates the content via Markov Chain, and proves to be a lot of fun. Check out our <a href="serenade.html">serenade</a> section to see entire "original" verses.
+              Welcome to the reason this project exists. At this endpoint you can supply a number as it's "bars" argument. The returned result will be a string that is "original" bars generated based on the corpus of all of Nicki Minaj's music within the database. It generates the content via Markov Chain, and proves to be a lot of fun. Check out our <a href="spit-verse.html">Spit Verse</a> section to see entire "original" verses.
             </p>
             <h4>Example jQuery AJAX call:</h4>
-            <textarea disabled>$.get("/api/spit/4");</textarea>
+            <textarea disabled>$.get("/api/spit/2");</textarea>
             <h4>Example Output:</h4>
-            <textarea class="output" disabled></textarea>
+            <textarea class="output" disabled>[&NewLine;&nbsp;&nbsp;"No no no no.",&NewLine;&nbsp;&nbsp;"Looking like a grand piano."&NewLine;]</textarea>
             <h4>Try it out:</h4>
             <p>
-              Head on over to <a href="serenade.html">Serenade</a> or <a href="lorem-minaj.html">Lorem Minaj</a> to see this endpoint in action.
+              Head on over to <a href="lorem-minaj.html">Lorem Minaj</a> to see this endpoint in action.
+            </p>
+          </section>
+          <section class="doc">
+            <h2>Spit an "original" verse</h2>
+            <h3>/api/spit/verse</h3>
+            <p>
+              This endpoint will return an array with 8 indexes representing each line of an 8 line verse. The lines are rhymed in an "aabb" pattern, meaning lines one and two will rhyme with eachother, then three and four eachother and so on.
+            </p>
+            <h4>Example jQuery AJAX call:</h4>
+            <textarea disabled>$.get("/api/spit/verse");</textarea>
+            <h4>Example Output:</h4>
+            <textarea class="output" disabled>[&NewLine;&nbsp;&nbsp;"No no no no.",&NewLine;&nbsp;&nbsp;"Looking like a grand piano.",&NewLine;&nbsp;&nbsp;"Haters you can't handle my worst.",&NewLine;&nbsp;&nbsp;"Let's go to SunTrust.",&NewLine;&nbsp;&nbsp;"You're a cheat and a fan too.",&NewLine;&nbsp;&nbsp;"Put you in a freakin' zoo.",&NewLine;&nbsp;&nbsp;"I said Yes daddy I do.",&NewLine;&nbsp;&nbsp;"This what you gon' do."&NewLine;]</textarea>
+            <h4>Try it out:</h4>
+            <p>
+              Head on over to <a href="spit-verse.html">Spit Verse</a> to see this endpoint in action.
             </p>
           </section>
         </div>
