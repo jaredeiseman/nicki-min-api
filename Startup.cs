@@ -4,6 +4,7 @@ using Microsoft.AspNet.Builder;
 using Nancy;
 using Nancy.Owin;
 using Nancy.ViewEngines.Razor;
+using NickiMinAPI.Objects;
 
 namespace NickiMinAPI
 {
