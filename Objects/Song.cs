@@ -125,12 +125,12 @@ namespace NickiMinAPI.Objects
     {
       string fixedTitle = CultureInfo.CurrentCulture
                          .TextInfo.ToTitleCase(
-                          String.Join(" ", title.Split('-')));
+                          String.Join("%", title.Split('-')));
 
       SqlConnection conn = DB.Connection();
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("SELECT DISTINCT * FROM songs WHERE title = @SongTitle;", conn);
+      SqlCommand cmd = new SqlCommand("SELECT DISTINCT * FROM songs WHERE title LIKE @SongTitle;", conn);
       cmd.Parameters.Add(new SqlParameter("@SongTitle", fixedTitle));
       SqlDataReader rdr = cmd.ExecuteReader();
 
