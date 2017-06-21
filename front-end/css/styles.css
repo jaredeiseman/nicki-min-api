@@ -272,6 +272,21 @@ nav .mobile-nav a:hover {
 
 .social-icons {
   z-index: 20 !important;
+  position: relative;
+}
+.social-icons h5 {
+  color: #ff4871;
+  transform: rotate(90deg);
+  white-space: nowrap;
+  position: absolute;
+  top: -120px;
+  left: -65px;
+  font-size: 20px;
+}
+@media screen and (min-width: 768px) {
+  .social-icons h5 {
+    display: none;
+  }
 }
 .social-icons .twitter, .social-icons .github {
   height: 40px;
@@ -515,6 +530,47 @@ input[type="number"]:focus, input[type="text"]:focus {
 
 .modal-open {
   overflow: hidden;
+}
+
+.follow-twitter {
+  font-family: Nevis-Bold, Arial, sans-serif;
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  padding: 28px 55px 28px 20px;
+  transition: color .3s, text-shadow .3s, background .3s;
+  background-color: #ff7b98;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .follow-twitter {
+    display: block;
+  }
+}
+.follow-twitter:hover {
+  color: #ff7b98;
+  background: black;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+.follow-twitter:hover:after {
+  background-image: url("../img/twit-pink.png");
+}
+.follow-twitter:after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-57%);
+  background-image: url("../img/twit-white.png");
+  background-size: 28px 28px;
+  background-repeat: no-repeat;
+  height: 28px;
+  width: 28px;
+  transition: background-image .3s;
 }
 
 header {

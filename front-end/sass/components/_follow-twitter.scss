@@ -1,0 +1,42 @@
+.follow-twitter {
+  font-family: $heading-font;
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  padding: 28px 55px 28px 20px;
+  transition: color .3s, text-shadow .3s, background .3s;
+  background-color: $c-d-1;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  display: none;
+
+  @include tablet-bp {
+    display: block;
+  }
+
+  &:hover {
+    color: $c-d-1;
+    background: black;
+    text-shadow: 1px 1px 1px rgba(0, 0 , 0, 0.5);
+
+    &:after {
+      background-image: url('../img/twit-pink.png');
+    }
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-57%);
+    background-image: url('../img/twit-white.png');
+    background-size: 28px 28px;
+    background-repeat: no-repeat;
+    @include size(28px);
+    transition: background-image .3s;
+  }
+
+}

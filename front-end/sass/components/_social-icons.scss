@@ -2,6 +2,21 @@ $social-size: 40px;
 
 .social-icons {
   z-index: 20 !important;
+  position: relative;
+
+  h5 {
+    color: $c-d-3;
+    transform: rotate(90deg);
+    white-space: nowrap;
+    position: absolute;
+    top: -120px;
+    left: -65px;
+    font-size: 20px;
+
+    @include tablet-bp {
+      display: none;
+    }
+  }
 
   .twitter, .github {
     @include size($social-size);
