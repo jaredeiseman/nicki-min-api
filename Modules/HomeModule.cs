@@ -81,13 +81,13 @@ namespace NickiMinAPI
       Get["/api/songs/count/{title}"] = parameters => {
         string title = parameters.title;
         Song foundSong = Song.Find(title);
-        Dictionary<string, int> results = Count.Words(foundSong.Lyrics);
+        Dictionary<string, int> results = Count.Song(foundSong, null);
         return results;
       };
       Get["/api/albums/count/{title}"] = parameters => {
         string title = parameters.title;
         Album foundAlbum = Album.Find(title);
-        Dictionary<string, int> results = Count.AnAlbum(foundAlbum);
+        Dictionary<string, int> results = Count.Album(foundAlbum, null);
         return results;
       };
       Get["/api/spit/verse"] = _ => {
