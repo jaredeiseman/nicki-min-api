@@ -59,7 +59,7 @@ namespace NickiMinAPI.Objects
         string girlGal = Regex.Replace(bWordRemoved, "(G|g)irl", "gal");
         string youYall = Regex.Replace(girlGal, "(Y|y)ou ", "y'all ");
         string goneDone = Regex.Replace(youYall, "(G|g)one", "done gone");
-        string ingIn = Regex.Replace(goneDone, "ing", "in'");
+        string ingIn = Regex.Replace(goneDone, "ing ", "in' ");
         string fixIm = Regex.Replace(ingIn, "(I|i) m", "I'm");
         string fixCant = Regex.Replace(fixIm, "n t ", "n't ");
         string noMun = Regex.Replace(fixCant, "(M|m)un", "YEEHAW");

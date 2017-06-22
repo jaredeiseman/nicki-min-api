@@ -19,8 +19,8 @@
   $('#lorem-generator').submit(function(e) {
     e.preventDefault();
     var quantity = $('input[name="quantity"]').val();
-    if (parseInt(quantity) > 8 || parseInt(quantity) <= 0) {
-      $('#lorem-output').text('Please input a positive number of sentences less than or equal to 8.');
+    if (parseInt(quantity) > 20 || parseInt(quantity) <= 0) {
+      $('#lorem-output').text('Please input a positive number of sentences less than or equal to 20.');
     } else {
       $.get('/api/spit/' + quantity)
       .done(function(data) {
