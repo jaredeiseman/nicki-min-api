@@ -3122,7 +3122,8 @@
       "TweetMoaSharp >= 4.0.1"
     ],
     "DNX,Version=v4.5.1": [
-      "fx/System.Data >= 4.0.0"
+      "fx/System.Data >= 4.0.0",
+      "fx/System.Net.Http >= 4.0.0"
     ]
   }
 }
