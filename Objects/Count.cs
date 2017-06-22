@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Text.RegularExpressions;
+using System.Linq;
 using System;
 
 namespace NickiMinAPI.Objects
@@ -27,8 +28,8 @@ namespace NickiMinAPI.Objects
           counts[word] ++;
         }
       }
-      //TODO: Order Dictionary by value;
-      return counts;
+      return counts.OrderByDescending(pair => pair.Value)
+                   .ToDictionary(pair => pair.Key, pair => pair.Value);
     }
     public static Dictionary<string, int> Album(Album album, Dictionary<string, int> counts)
     {
