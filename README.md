@@ -9,7 +9,12 @@ Nicki Min-API is a RESTful Application Program Interface for information regardi
 
 ## Screenshots of the Project
 <img src="Content/img/screenshots/landing.png" alt="landing">
-  <![screenshot]('./Content/img/screenshots/landing.png')  <![screenshot]('/Content/img/screenshots/doc1.png')  <![screenshot]('/Content/img/screenshots/doc2.png')  <![screenshot]('/Content/img/screenshots/modal1.png')  <![screenshot]('/Content/img/screenshots/spit-verse.png')  <![screenshot]('/Content/img/screenshots/lorem-minaj.png')  <![screenshot]('/Content/img/screenshots/about.png')  
+<img src="Content/img/screenshots/doc1.png" alt="landing">
+<img src="Content/img/screenshots/doc2.png" alt="landing">
+<img src="Content/img/screenshots/modal1.png" alt="landing">
+<img src="Content/img/screenshots/spit-verse.png" alt="landing">
+<img src="Content/img/screenshots/lorem-minaj.png" alt="landing">
+<img src="Content/img/screenshots/about.png" alt="landing">
 
 ## Specifications
 | Behavior | Input | Output |
