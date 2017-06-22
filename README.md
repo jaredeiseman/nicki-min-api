@@ -7,6 +7,15 @@
 ## Description
 Nicki Min-API is a RESTful Application Program Interface for information regarding Nicki Minaj music. The inception of this idea was spawned from a project we discovered by the name of Kanye REST (http://www.kanyerest.xyz/), and modified to be used for an Epicodus (https://www.epicodus.com/) Group Week Project as an exercise in developing the front-end of a site alongside the back end. The application contains a suite of various endpoints returning data about music of Nicki Minaj, as well as a front end documentation site/demonstration site. It is capable of utilizing Markov Chaining logic to produce "original" lyrics based on the corpus of Nicki Minaj's lyrics, including rhyming multiple lines in an "aabb" pattern.
 
+## Screenshots of the Project
+<img src="Content/img/screenshots/landing.png" alt="landing">
+<img src="Content/img/screenshots/doc1.png" alt="landing">
+<img src="Content/img/screenshots/doc2.png" alt="landing">
+<img src="Content/img/screenshots/modal1.png" alt="landing">
+<img src="Content/img/screenshots/spit-verse.png" alt="landing">
+<img src="Content/img/screenshots/lorem-minaj.png" alt="landing">
+<img src="Content/img/screenshots/about.png" alt="landing">
+
 ## Specifications
 | Behavior | Input | Output |
 | - | - | - |
