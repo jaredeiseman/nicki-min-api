@@ -27,7 +27,7 @@ namespace NickiMinAPI
       Song testSong = new Song("Super Bass", "[Hook] Can't you hear that boom, badoom, boom, boom, badoom, boom, bass Got that super bass boom, badoom, boom, boom, badoom, boom, bass", 1);
       testSong.Save();
       //Act
-      Dictionary<string, int> actual = Count.Words(testSong.Lyrics);
+      Dictionary<string, int> actual = Count.Song(testSong, null);
       Dictionary<string, int> expected = new Dictionary<string, int> {
         {"can't", 1}, {"you", 1}, {"hear", 1}, {"that", 2}, {"boom", 8}, {"badoom", 4}, {"bass", 3}, {"got", 1}, {"super", 1}
       };
@@ -45,7 +45,7 @@ namespace NickiMinAPI
       Song testSong2 = new Song("Super Bass 2", "[Hook] Can't you hear that boom, badoom, boom, boom, badoom, boom, bass Got that super bass boom, badoom, boom, boom, badoom, boom, bass", testAlbum.Id);
       testSong2.Save();
       //Act
-      Dictionary<string, int> actual = Count.AnAlbum(testAlbum);
+      Dictionary<string, int> actual = Count.Album(testAlbum, null);
       Dictionary<string, int> expected = new Dictionary<string, int> {
         {"can't", 2}, {"you", 2}, {"hear", 2}, {"that", 4}, {"boom", 16}, {"badoom", 8}, {"bass", 6}, {"got", 2}, {"super", 2}
       };

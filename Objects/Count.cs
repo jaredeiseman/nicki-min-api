@@ -8,10 +8,12 @@ namespace NickiMinAPI.Objects
 {
   public class Count
   {
-    public static Dictionary<string, int> Words(string lyrics)
+    public static Dictionary<string, int> Song(Song song, Dictionary<string, int> counts)
     {
-      Dictionary<string, int> counts = new Dictionary<string, int> {};
-      string withoutBracketedText = Regex.Replace(lyrics, @"\[.*?\]", "");
+      if (counts == null) {
+        counts = new Dictionary<string, int> {};
+      }
+      string withoutBracketedText = Regex.Replace(song.Lyrics, @"\[.*?\]", "");
       string linebreaksSpaced = withoutBracketedText.Replace(System.Environment.NewLine, " ");
       string withoutPunctuation = Regex.Replace(linebreaksSpaced, @"[^a-zA-Z' \-]", " ");
       string[] corpusSplit = withoutPunctuation.ToLower().Split(new string[] {" ", "—"}, StringSplitOptions.RemoveEmptyEntries);
@@ -28,26 +30,24 @@ namespace NickiMinAPI.Objects
       //TODO: Order Dictionary by value;
       return counts;
     }
-    public static Dictionary<string, int> AnAlbum(Album album)
+    public static Dictionary<string, int> Album(Album album, Dictionary<string, int> counts)
     {
-      string corpus = "";
+      if (counts == null) {
+        counts = new Dictionary<string, int> {};
+      }
       foreach (Song song in album.GetSongs())
       {
-        corpus += song.Lyrics + " ";
+        counts = Count.Song(song, counts);
       }
-      Dictionary<string, int> counts = Count.Words(corpus);
       return counts;
     }
     public static Dictionary<string, int> All()
     {
-      string corpus = "";
-      foreach (Album album in Album.GetAll())
+      Dictionary<string, int> counts = new Dictionary<string, int> {};
+      foreach (Album album in NickiMinAPI.Objects.Album.GetAll())
       {
-        foreach (Song song in album.GetSongs()) {
-          corpus += song.Lyrics + " ";
-        }
+        counts = Count.Album(album, counts);
       }
-      Dictionary<string, int> counts = Count.Words(corpus);
       return counts;
     }
   }
