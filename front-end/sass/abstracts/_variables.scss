@@ -20,16 +20,6 @@ $c-d-1: darken($primary-color, 5%);
 $c-d-2: darken($primary-color, 10%);
 $c-d-3: darken($primary-color, 15%);
 
-
-  // $primary-color: red;
-  // $c-l-1: lighten($primary-color, 5%);
-  // $c-l-2: lighten($primary-color, 10%);
-  // $c-l-3: lighten($primary-color, 15%);
-  // $c-d-1: darken($primary-color, 5%);
-  // $c-d-2: darken($primary-color, 10%);
-  // $c-d-3: darken($primary-color, 15%);
-
-
 //breakpoints
 $tablet-bp: 'screen and (min-width: 768px)';
 $desktop-bp: 'screen and (min-width: 992px)';
