@@ -7,14 +7,23 @@
 ## Description
 Nicki Min-API is a RESTful Application Program Interface for information regarding Nicki Minaj music. The inception of this idea was spawned from a project we discovered by the name of Kanye REST (http://www.kanyerest.xyz/), and modified to be used for an Epicodus (https://www.epicodus.com/) Group Week Project as an exercise in developing the front-end of a site alongside the back end. The application contains a suite of various endpoints returning data about music of Nicki Minaj, as well as a front end documentation site/demonstration site. It is capable of utilizing Markov Chaining logic to produce "original" lyrics based on the corpus of Nicki Minaj's lyrics, including rhyming multiple lines in an "aabb" pattern.
 
+## Screenshots of the Project
+<img src="Content/img/screenshots/landing.png" alt="landing">
+<img src="Content/img/screenshots/doc1.png" alt="landing">
+<img src="Content/img/screenshots/doc2.png" alt="landing">
+<img src="Content/img/screenshots/modal1.png" alt="landing">
+<img src="Content/img/screenshots/spit-verse.png" alt="landing">
+<img src="Content/img/screenshots/lorem-minaj.png" alt="landing">
+<img src="Content/img/screenshots/about.png" alt="landing">
+
 ## Specifications
 | Behavior | Input | Output |
 | - | - | - |
 | User wants the lyrics to a song. | sends GET to /api/songs/:title | receives JSON containing the song, its lyrics, and its album |
 | User wants information about an album  | sends GET to /api/albums/:title | receives JSON containing album title, album art, release date, its songs, their lyrics |
-| User wants to see a word frequency list for Nicki Minaj | sends GET to /api/count | receives JSON with all words from Nicki Minaj songs |
-| User wants to see a word frequency list for an album | sends GET to /api/albums/count/:title | receives JSON with all words from that album |
-| User wants to see a word frequency list for a song | sends GET to /api/songs/count/:title | receives JSON with all words from that song |
+| User wants to see a word frequency list for Nicki Minaj | sends GET to /api/count | receives JSON with all words from Nicki Minaj songs ordered by count |
+| User wants to see a word frequency list for an album | sends GET to /api/albums/count/:title | receives JSON with all words from that album ordered by count |
+| User wants to see a word frequency list for a song | sends GET to /api/songs/count/:title | receives JSON with all words from that song ordered by count |
 | Developer wants to add information to the back end | Submit form located at /form | receives a response code and route back to form |
 | User wants to hear a computer spit some stuff | sends GET to /api/spit/:number | receives Markov-generated response of :number sentences |
 | User wants to hear a computer spit a verse | sends GET to /api/spit/verse | receives a Markov-generated response of verse length with lines split into separate key-value pairs |

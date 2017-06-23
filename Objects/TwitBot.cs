@@ -13,32 +13,12 @@ namespace NickiMinAPI.Objects
     public static void StartTimer()
     {
       timer = new Timer();
-      timer.Interval = 6000000;
+      timer.Interval = 1000 * 60 * 1.2;
 
       timer.Elapsed += OnTimedEvent;
       timer.AutoReset = true;
       timer.Enabled = true;
     }
-    // public static ActionResult Authorize()
-    // {
-    //   TwitterService service = new TwitterService(EnvVars.ConsumerKey, EnvVars.ConsumerSecret);
-    // //   OAuthRequestToken requestToken = service.GetRequestToken("http://localhost:5004/AuthorizeCallback");
-    // //   Uri uri = service.GetAuthorizationUri(requestToken);
-    // //   return new RedirectResult(uri.ToString(), false);
-    // // }
-    // // public static ActionResult AuthorizeCallback(string oAuthToken, string oAuthVerifier)
-    // // {
-    // //   OAuthRequestToken requestToken = new OAuthRequestToken {Token = oAuthToken};
-    // //
-    // //   TwitterService service = new TwitterService(EnvVars.ConsumerKey, EnvVars.ConsumerSecret);
-    // //   OAuthAccessToken accessToken = service.GetAccessToken(requestToken, oAuthVerifier);
-    // //
-    // //   service.AuthenticateWith(accessToken.Token, accessToken.TokenSecret);
-    // //   TwitterUser user = service.VerifyCredentials();
-    // //   ViewModel.Message = string.Format("Your username is {0}", user.ScreenName);
-    // //   return View();
-    // // }
-    // }
     public static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
     {
       TwitBot.TweetBars();

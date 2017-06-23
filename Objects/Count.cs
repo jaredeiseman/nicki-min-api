@@ -2,20 +2,20 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Text.RegularExpressions;
+using System.Linq;
 using System;
 
 namespace NickiMinAPI.Objects
 {
   public class Count
   {
-    public static Dictionary<string, int> Words(string lyrics)
+    public static Dictionary<string, int> Song(Song song, Dictionary<string, int> counts)
     {
-      //TODO:Refactor this so that each. Add a Dictionary as an optional param which the function can optionally operate on. The will circumvent the problem of combining dictionaries in the album and discography count functions.
-      Dictionary<string, int> counts = new Dictionary<string, int> {};
-      string withoutBracketedText = Regex.Replace(lyrics, @"\[.*?\]", "");
+      if (counts == null) {
+        counts = new Dictionary<string, int> {};
+      }
+      string withoutBracketedText = Regex.Replace(song.Lyrics, @"\[.*?\]", "");
       string linebreaksSpaced = withoutBracketedText.Replace(System.Environment.NewLine, " ");
-      //TODO: Remove exclamations, questions, and commas and \. Leave -.
-      //TODO: Figure out what's causing meditiationhigher on 867 of output. Cryinchristopher around 794.
       string withoutPunctuation = Regex.Replace(linebreaksSpaced, @"[^a-zA-Z' \-]", " ");
       string[] corpusSplit = withoutPunctuation.ToLower().Split(new string[] {" ", "—"}, StringSplitOptions.RemoveEmptyEntries);
       foreach (string word in corpusSplit) {
@@ -28,29 +28,27 @@ namespace NickiMinAPI.Objects
           counts[word] ++;
         }
       }
-      //TODO: Order Dictionary by value;
-      return counts;
+      return counts.OrderByDescending(pair => pair.Value)
+                   .ToDictionary(pair => pair.Key, pair => pair.Value);
     }
-    public static Dictionary<string, int> AnAlbum(Album album)
+    public static Dictionary<string, int> Album(Album album, Dictionary<string, int> counts)
     {
-      string corpus = "";
+      if (counts == null) {
+        counts = new Dictionary<string, int> {};
+      }
       foreach (Song song in album.GetSongs())
       {
-        corpus += song.Lyrics + " ";
+        counts = Count.Song(song, counts);
       }
-      Dictionary<string, int> counts = Count.Words(corpus);
       return counts;
     }
     public static Dictionary<string, int> All()
     {
-      string corpus = "";
-      foreach (Album album in Album.GetAll())
+      Dictionary<string, int> counts = new Dictionary<string, int> {};
+      foreach (Album album in NickiMinAPI.Objects.Album.GetAll())
       {
-        foreach (Song song in album.GetSongs()) {
-          corpus += song.Lyrics + " ";
-        }
+        counts = Count.Album(album, counts);
       }
-      Dictionary<string, int> counts = Count.Words(corpus);
       return counts;
     }
   }
